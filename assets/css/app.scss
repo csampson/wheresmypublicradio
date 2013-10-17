@@ -19,6 +19,12 @@ body {
   background: #F4F9FD;
   font: inherit;
   padding: 1.5em;
+  margin: 0;
+
+  &::-moz-focus-inner {
+    border: 0;
+    margin: 0;
+  }
 
   // remove increment/decrement buttons
   &::-webkit-inner-spin-button {
@@ -28,6 +34,12 @@ body {
 
 button {
   @extend .btn;
+  margin: 0;
+
+  &::-moz-focus-inner {
+    border: 0;
+    margin: 0;
+  }
 }
 
 .btn {
@@ -43,18 +55,17 @@ button {
 
 .addon-field {
   display: inline-block;
-  position: relative;
+
+  input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    float: left;
+  }
 
   .btn {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    width: 4em;
-    padding-left: 0;
-    padding-right: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
+    float: left;
   }
 }
 
@@ -71,9 +82,7 @@ button {
 }
 
 .search-by-zip-field {
-  input[type='number'] {
-    padding-right: 4em;
-  }
+  vertical-align: middle;
 
   .btn span {
     @extend .hidden-text;
@@ -82,6 +91,7 @@ button {
 
 .search-by-geolocation {
   width: 15em;
+  vertical-align: middle;
 }
 
 .best-station {
