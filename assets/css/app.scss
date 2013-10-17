@@ -1,0 +1,100 @@
+@import 'bourbon/bourbon';
+
+* {
+  @include box-sizing(border-box);
+}
+
+body {
+  background: #32598C;
+  color: #F4F9FD;
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+  display: table;
+  margin: 5em auto 0;
+}
+
+#{$all-text-inputs} {
+  border-radius: 3px;
+  border: none;
+  background: #F4F9FD;
+  font: inherit;
+  padding: 1.5em;
+
+  // remove increment/decrement buttons
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+}
+
+button {
+  @extend .btn;
+}
+
+.btn {
+  box-shadow: 0 4px 0 0 #6C9BD9 inset;
+  border-radius: 3px;
+  border: none;
+  background: #6C9BD9;
+  color: #FFF;
+  font: inherit;
+  cursor: pointer;
+  padding: 1.5em;
+}
+
+.addon-field {
+  display: inline-block;
+  position: relative;
+
+  .btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    width: 4em;
+    padding-left: 0;
+    padding-right: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+}
+
+.hidden-text {
+  @include hide-text;
+}
+
+.page-header {
+  font-size: 200%;
+}
+
+.spiel {
+  font-size: 125%;
+}
+
+.search-by-zip-field {
+  input[type='number'] {
+    padding-right: 4em;
+  }
+
+  .btn span {
+    @extend .hidden-text;
+  }
+}
+
+.search-by-geolocation {
+  width: 15em;
+}
+
+.best-station {
+  border-top: 1px solid rgba(255,255,255,0.15);
+  font-size: 200%;
+  line-height: 1;
+  padding-top: 1em;
+  margin-top: 1em;
+
+  .station-identifier {
+    font-size: 150%;
+    font-weight: bold;
+    margin-top: 0.375em;
+    display: block;
+  }
+}

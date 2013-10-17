@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang='en-US' ng-app='wheresMyNpr'>
+<head>
+  <meta charset='utf-8' />
+  <title>Wheres My NPR?</title>
+  <%= css :app %>
+  <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css' />
+  <link href='//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.min.css' rel='stylesheet' type='text/css' />
+  <script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+  <script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js'></script>
+</head>
+<body ng-controller='StationFinderCtrl'>
+  <header>
+    <h1 class='page-header'>Where's My NPR?</h1>
+    <p class='spiel'>Find an NPR member station near you.</p>
+  </header>
+
+  <form>
+    <span class='search-by-zip-field addon-field'>
+      <input name='zipcode' type='number' placeholder='Enter your zip code' ng-model='zipcode' />
+      <button type='submit' ng-click='findByZip()'><i class='icon-search'></i><span>Search</span></button>
+    </span>
+
+    &mdash; or &mdash;
+
+    <button class='search-by-geolocation' type='button' ng-click='findByLocation()'>Use my geolocation</button>
+  </form>
+
+  <p class='best-station' ng-show='bestStation'>
+    Tune into
+    <strong class='station-identifier'>{{bestStation}}</strong>
+  </p>
+
+  <%= js :app %>
+</body>
+</html>
