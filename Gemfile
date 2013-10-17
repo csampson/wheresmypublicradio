@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rack'
 gem 'rspec'
+gem 'dotenv'
 gem 'sinatra'
 gem 'sinatra-assetpack'
 gem 'xml-simple'
