@@ -10,7 +10,7 @@ class App < Sinatra::Base
   assets {
     serve '/css', {:from => 'assets/css'}
     serve '/js', {:from => 'assets/js'}
-    serve '/images', {:from => 'assets/images'}
+    #serve '/images', {:from => 'assets/images'}
 
     css :app, ['css/app.css']
     js :app, ['js/app.js']
