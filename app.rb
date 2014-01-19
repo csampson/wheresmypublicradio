@@ -9,11 +9,11 @@ class App < Sinatra::Base
 
   assets {
     serve '/css', {:from => 'assets/css'}
-    serve '/js', {:from => 'assets/js'}
+    serve '/js',  {:from => 'assets/js'}
     #serve '/images', {:from => 'assets/images'}
 
     css :app, ['css/app.css']
-    js :app, ['js/app.js']
+    js  :app, ['js/app.js', 'js/controllers.js', 'js/services.js']
   }
 
   set :scss, { :load_paths => [ "#{App.root}/assets/css" ] }

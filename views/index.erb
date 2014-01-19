@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang='en-US' ng-app='wheresMyNpr'>
+<html lang='en-US' data-ng-app='wheresMyNpr'>
 <head>
   <meta charset='utf-8' />
   <title>Wheres My NPR?</title>
@@ -7,9 +7,9 @@
   <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css' />
   <link href='//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.min.css' rel='stylesheet' type='text/css' />
   <script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
-  <script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js'></script>
+  <script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js'></script>
 </head>
-<body ng-controller='StationFinderCtrl'>
+<body data-ng-controller='StationFinderCtrl'>
   <header>
     <h1 class='page-header'>Where's My NPR?</h1>
     <p class='spiel'>Find an NPR member station near you.</p>
@@ -17,16 +17,16 @@
 
   <form>
     <span class='search-by-zip-field addon-field'>
-      <input name='zipcode' type='number' placeholder='Enter your zip code' ng-model='zipcode' />
-      <button type='submit' ng-click='findByZip()'><i class='icon-search'></i><span>Search</span></button>
+      <input name='zipcode' type='number' placeholder='Enter your zip code' data-ng-model='zipcode' />
+      <button type='submit' data-ng-click='findByZip()'><i class='icon-search'></i><span>Search</span></button>
     </span>
 
     &mdash; or &mdash;
 
-    <button class='search-by-geolocation' type='button' ng-click='findByLocation()'>Use my geolocation</button>
+    <button class='search-by-geolocation' type='button' data-ng-click='findByLocation()'>Use my geolocation</button>
   </form>
 
-  <p class='best-station' ng-show='bestStation'>
+  <p class='best-station' data-ng-show='bestStation'>
     Tune into
     <strong class='station-identifier'>{{bestStation}}</strong>
   </p>
