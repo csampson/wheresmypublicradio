@@ -7,5 +7,5 @@ gem 'sinatra'
 gem 'sinatra-assetpack'
 gem 'xml-simple'
 gem 'sass'
-gem 'bourbon'
+gem 'bourbon', '~> 3.2.0.beta.2'
 

@@ -70,7 +70,8 @@ button {
 }
 
 .hidden-text {
-  @include hide-text;
+  position: absolute;
+  left: -9999em;
 }
 
 .page-header {
@@ -83,10 +84,6 @@ button {
 
 .search-by-zip-field {
   vertical-align: middle;
-
-  .btn span {
-    @extend .hidden-text;
-  }
 }
 
 .search-by-geolocation {
