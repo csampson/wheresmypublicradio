@@ -13,7 +13,7 @@ class App < Sinatra::Base
     #serve '/images', {:from => 'assets/images'}
 
     css :app, ['css/app.css']
-    js  :app, ['js/app.js', 'js/controllers.js', 'js/services.js']
+    js  :app, ['js/app.js', 'js/controllers.js', 'js/services.js', 'js/directives.js']
   }
 
   set :scss, { :load_paths => [ "#{App.root}/assets/css" ] }
@@ -44,12 +44,27 @@ class App < Sinatra::Base
     band = strongest_station['band'][0]
     call_letters = strongest_station['callLetters'][0]
 
+    home_page = strongest_station['url'].find{ |url| url['type'] == 'Organization Home Page' }
+    pledge_page =  strongest_station['url'].find{ |url| url['type'] == 'Pledge Page' }
+    stream_url = strongest_station['url'].find{ |url| url['type'] =~ /MP3 Stream|AAC Stream/ && url['primary'] == 'true' }
+
     {
       :label => "#{frequency} #{band} - #{call_letters}",
-      :home_page => strongest_station['url'].find{ |url| url['type'] == 'Organization Home Page' }['content'],
-      :pledge_page => strongest_station['url'].find{ |url| url['type'] == 'Pledge Page' }['content'],
-      :audio_stream => strongest_station['url'].find{ |url| url['type'].match(/Stream/i) && url['primary'] }['content']
+      :home_page => home_page && home_page['content'],
+      :pledge_page => pledge_page && pledge_page['content'],
+      :stream_url => stream_url && stream_url['content'] # TODO: api's MP3 Stream' support
     }.to_json
+  end
+
+  get '/listen' do
+    playlist = open(params[:url]).read
+
+    # support for .pls or .m3u playlists
+    if params[:url] =~ /.pls\b/i
+      playlist.split("\n").find{ |line| line.match /File\d/ }.split('=')[1]
+    else
+      playlist.split("\n").find{ |line| line =~ URI::regexp(['http', 'https']) }
+    end
   end
 end
 

@@ -26,7 +26,7 @@
     <button class='search-by-geolocation' type='button' data-ng-click='findByLocation()'>Use my geolocation</button>
   </form>
 
-  <section class='best-station' data-ng-show='bestStation'>
+  <section class='best-station' data-ng-if='bestStation'>
     <p class='best-station-summary'>
       Tune into
       <span class='best-station-label'>{{bestStation.label}}</span>
@@ -35,7 +35,7 @@
     <div class='best-station-controls'> <% #decide on a semantic element later %>
       <a data-ng-if='bestStation.home_page' data-ng-href='{{bestStation.homepage}}' class='best-station-visit'><i class='fa-globe fa'></i> Visit</a>
       <a data-ng-if='bestStation.pledge_page' data-ng-href='{{bestStation.pledge_page}}' class='best-station-pledge'><i class='fa-heart fa'></i> Pledge</a>
-      <!-- <button class='best-station-listen' type='button'><i class='fa-play fa'></i> Listen</button> -->
+      <button data-ng-if='bestStation.stream_url' class='best-station-listen' type='button' data-stream-url='{{bestStation.stream_url}}' data-radio-streamer></button>
     </div>
   </section>
 

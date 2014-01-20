@@ -120,6 +120,10 @@ button {
     margin-left: 1em;
   }
 
+  .best-station-controls .fa {
+    margin-right: 0.25em;
+  }
+
   .best-station-visit, .best-station-pledge, .best-station-listen {
     @extend .btn;
     font-size: 80%;
