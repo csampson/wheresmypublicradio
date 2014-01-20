@@ -52,16 +52,21 @@ class App < Sinatra::Base
       :label => "#{frequency} #{band} - #{call_letters}",
       :home_page => home_page && home_page['content'],
       :pledge_page => pledge_page && pledge_page['content'],
-      :stream_url => stream_url && stream_url['content'] # TODO: api's MP3 Stream' support
+      :stream_url => stream_url && stream_url['content']
     }.to_json
   end
 
   get '/listen' do
+    # return if an actual audio file url
+    unless params[:url] =~ /.pls|.m3u\b/i
+      return params[:url]
+    end
+
     playlist = open(params[:url]).read
 
     # support for .pls or .m3u playlists
     if params[:url] =~ /.pls\b/i
-      playlist.split("\n").find{ |line| line.match /File\d/ }.split('=')[1]
+      playlist.split("\n").find{ |line| line.match /File\d/ }.split('=')[1] << ';' # trailing semi-colon to force streaming
     else
       playlist.split("\n").find{ |line| line =~ URI::regexp(['http', 'https']) }
     end
