@@ -23,6 +23,7 @@ class App < Sinatra::Base
   end
 
   get '/best_station' do
+    content_type :json
     api_params = {:apiKey => ENV['API_KEY']}
 
     if params['zipcode']
@@ -38,11 +39,17 @@ class App < Sinatra::Base
 
      # unsure why their api returns  random array values...
     strongest_station = stations.max_by{|s|s['signal'][0]['strength'].to_i }
+
     frequency = strongest_station['frequency'][0]
     band = strongest_station['band'][0]
     call_letters = strongest_station['callLetters'][0]
 
-    "#{frequency} #{band} - #{call_letters}"
+    {
+      :label => "#{frequency} #{band} - #{call_letters}",
+      :home_page => strongest_station['url'].find{ |url| url['type'] == 'Organization Home Page' }['content'],
+      :pledge_page => strongest_station['url'].find{ |url| url['type'] == 'Pledge Page' }['content'],
+      :audio_stream => strongest_station['url'].find{ |url| url['type'].match(/Stream/i) && url['primary'] }['content']
+    }.to_json
   end
 end
 

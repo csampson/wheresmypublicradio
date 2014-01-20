@@ -49,6 +49,7 @@ button {
   background: #6C9BD9;
   color: #FFF;
   font: inherit;
+  text-decoration: none;
   cursor: pointer;
   padding: 1.5em;
 }
@@ -75,7 +76,7 @@ button {
 }
 
 .page-header {
-  font-size: 200%;
+  font-size: 300%;
 }
 
 .spiel {
@@ -93,15 +94,37 @@ button {
 
 .best-station {
   border-top: 1px solid rgba(255,255,255,0.15);
-  font-size: 200%;
+  font-size: 125%;
   line-height: 1;
   padding-top: 1em;
   margin-top: 1em;
 
-  .station-identifier {
+  .best-station-summary {
+    margin-top: 0;
+  }
+
+  .best-station-label {
     font-size: 150%;
     font-weight: bold;
     margin-top: 0.375em;
+    margin-bottom: 0.375em;
     display: block;
+  }
+
+  .best-station-controls {
+    @include display(flex);
+  }
+
+  // :)
+  .best-station-controls > * + * {
+    margin-left: 1em;
+  }
+
+  .best-station-visit, .best-station-pledge, .best-station-listen {
+    @extend .btn;
+    font-size: 80%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    @include flex(1);
   }
 }
