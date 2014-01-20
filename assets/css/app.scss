@@ -5,9 +5,10 @@
 }
 
 body {
-  background: #32598C;
+  background: #2D4059;
   color: #F4F9FD;
-  font-family: 'Lato', sans-serif;
+  text-shadow: 0 1px rgba(0,0,0,0.5);
+  font-family: 'Roboto Condensed', sans-serif;
   text-align: center;
   display: table;
   margin: 5em auto 0;
@@ -43,11 +44,11 @@ button {
 }
 
 .btn {
-  box-shadow: 0 4px 0 0 #6C9BD9 inset;
   border-radius: 3px;
   border: none;
-  background: #6C9BD9;
+  background: #5377A6;
   color: #FFF;
+  text-shadow: rgba(0,0,0,0.25);
   font: inherit;
   text-decoration: none;
   cursor: pointer;
@@ -76,7 +77,8 @@ button {
 }
 
 .page-header {
-  font-size: 300%;
+  font-size: 400%;
+  font-weight: normal;
 }
 
 .spiel {
@@ -113,6 +115,7 @@ button {
 
   .best-station-controls {
     @include display(flex);
+    @include flex-flow(row wrap);
   }
 
   // :)
@@ -130,5 +133,11 @@ button {
     padding-top: 1em;
     padding-bottom: 1em;
     @include flex(1);
+  }
+
+  .best-station-listen {
+    background: #A65353;
+    margin: 1em 0 0;
+    @include flex(1 100%);
   }
 }
