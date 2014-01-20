@@ -25,6 +25,12 @@ angular.module('wheresMyNpr.directives', [])
           if(source) scope.play();
         });
 
+        // handle resetting when changing stations
+        scope.$parent.$watch('bestStation', function() {
+          delete scope.source;
+          scope.pause();
+        });
+
         element.on('click', function() {
           if(!scope.source) {
             $http.get('/listen', { params: { url: attributes.streamUrl }}).success(function(response) {
