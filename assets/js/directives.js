@@ -1,11 +1,7 @@
 angular.module('wheresMyNpr.directives', [])
   .directive('radioStreamer', ['$http', '$sce', function($http, $sce) {
     return {
-      template: "\
-        <i class='{{actionIcon}}'></i>\
-        Listen \
-        <audio data-ng-src='{{source}}'></audio>\
-      ",
+      template: "<i class='{{actionIcon}}'></i> Listen <audio data-ng-src='{{source}}'></audio>",
       link: function(scope, element, attributes) {
         scope.actionIcon = 'fa-play fa';
 
