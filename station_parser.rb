@@ -19,7 +19,7 @@ class StationParser
 
     home_page = station['url'].find{ |url| url['type'] == 'Organization Home Page' }
     pledge_page = station['url'].find{ |url| url['type'] == 'Pledge Page' }
-    stream_url = station['url'].find{ |url| url['type'] =~ /MP3 Stream|AAC Stream/ && url['primary'] == 'true' }
+    stream_url = station['url'].find{ |url| url['type'] =~ /MP3 Stream/ && url['primary'] == 'true' }
     signal_strength = station['signal'][0]['strength'].to_i
 
     {
