@@ -1,5 +1,11 @@
 @import 'bourbon/bourbon';
 
+@include keyframes(loading-throb) {
+  0%   { @include transform(scale(1)); }
+  50%  { @include transform(scale(1.5)); }
+  100% { @include transform(scale(1)); }
+}
+
 * {
   @include box-sizing(border-box);
 }
@@ -100,6 +106,33 @@ button {
   line-height: 1;
   padding-top: 1em;
   margin-top: 1em;
+
+  .best-station-loading {
+    margin-top: 2em;
+    display: inline-block;
+    position: relative;
+
+    &:before {
+      content: '';
+      @include animation(loading-throb 1.25s ease-in infinite);
+      border-radius: 100%;
+      background: rgba(83, 119, 166, 0.25);
+      text-shadow: none;
+      padding: 1em;
+      position: absolute;
+      left: -0.15em;
+      right: -0.15em;
+      top: -0.15em;
+      bottom: -0.15em;
+    }
+  }
+
+  .best-station-loading-icon {
+    border-radius: 100%;
+    background: rgba(83, 119, 166, 0.5);
+    color: #FFF;
+    padding: 0.75em;
+  }
 
   .best-station-summary {
     margin-top: 0;

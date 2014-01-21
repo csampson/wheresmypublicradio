@@ -15,10 +15,10 @@
     <p class='spiel'>Find an NPR member station near you.</p>
   </header>
 
-  <form>
+  <form name='searchForm'>
     <span class='search-by-zip-field addon-field'>
-      <input name='zipcode' type='number' placeholder='Enter your zip code' data-ng-model='zipcode' />
-      <button type='submit' data-ng-click='findByZip()'><i class='fa-search fa'></i><span class='hidden-text'>Search</span></button>
+      <input name='zipcode' type='number' placeholder='Enter your zip code' data-ng-model='zipcode' min='0' required />
+      <button type='submit' data-ng-disabled='searchForm.$invalid' data-ng-click='findByZip()'><i class='fa-search fa'></i><span class='hidden-text'>Search</span></button>
     </span>
 
     &mdash; or &mdash;
@@ -26,13 +26,15 @@
     <button class='search-by-geolocation' type='button' data-ng-click='findByLocation()'>Use my geolocation</button>
   </form>
 
-  <section class='best-station' data-ng-if='bestStation'>
-    <p class='best-station-summary'>
+  <section class='best-station' data-ng-if='bestStation || loading'>
+    <span class='best-station-loading' data-ng-hide='bestStation'><i class='best-station-loading-icon fa-coffee fa'></i></span>
+
+    <p class='best-station-summary' data-ng-if='bestStation'>
       Tune in to
       <span class='best-station-label'>{{bestStation.label}}</span>
     </p>
 
-    <div class='best-station-controls'> <% #decide on a semantic element later %>
+    <div class='best-station-controls'  data-ng-if='bestStation'> <% #decide on a semantic element later %>
       <a data-ng-if='bestStation.home_page' data-ng-href='{{bestStation.home_page}}' class='best-station-visit'><i class='fa-globe fa'></i> Visit</a>
       <a data-ng-if='bestStation.pledge_page' data-ng-href='{{bestStation.pledge_page}}' class='best-station-pledge'><i class='fa-heart fa'></i> Pledge</a>
       <button data-ng-if='bestStation.stream_url' class='best-station-listen' type='button' data-stream-url='{{bestStation.stream_url}}' data-radio-streamer></button>
