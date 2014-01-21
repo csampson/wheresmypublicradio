@@ -2,9 +2,9 @@ require 'sinatra'
 require 'sinatra/assetpack'
 require 'open-uri'
 require 'json'
-require 'xmlsimple'
 
 require_relative './playlist'
+require_relative './station_parser'
 
 class App < Sinatra::Base
   register Sinatra::AssetPack
@@ -37,25 +37,9 @@ class App < Sinatra::Base
 
     api_params_encoded = ::URI.encode_www_form(api_params)
     api_response = open("http://api.npr.org/stations?#{api_params_encoded}").read
-    stations = XmlSimple.xml_in(api_response)['station']
+    station_parser = StationParser.new(:stations_xml => api_response)
 
-     # unsure why their api returns  random array values...
-    strongest_station = stations.max_by{|s|s['signal'][0]['strength'].to_i }
-
-    frequency = strongest_station['frequency'][0]
-    band = strongest_station['band'][0]
-    call_letters = strongest_station['callLetters'][0]
-
-    home_page = strongest_station['url'].find{ |url| url['type'] == 'Organization Home Page' }
-    pledge_page =  strongest_station['url'].find{ |url| url['type'] == 'Pledge Page' }
-    stream_url = strongest_station['url'].find{ |url| url['type'] =~ /MP3 Stream|AAC Stream/ && url['primary'] == 'true' }
-
-    {
-      :label => "#{frequency} #{band} - #{call_letters}",
-      :home_page => home_page && home_page['content'],
-      :pledge_page => pledge_page && pledge_page['content'],
-      :stream_url => stream_url && stream_url['content']
-    }.to_json
+    station_parser.get_strongest_station.to_json
   end
 
   get '/listen' do
