@@ -4,6 +4,8 @@ require 'open-uri'
 require 'json'
 require 'xmlsimple'
 
+require_relative './playlist'
+
 class App < Sinatra::Base
   register Sinatra::AssetPack
 
@@ -58,18 +60,14 @@ class App < Sinatra::Base
 
   get '/listen' do
     # return if an actual audio file url
-    unless params[:url] =~ /.pls|.m3u\b/i
+    unless params[:url] =~ /.pls|.m3u*\b/i
       return params[:url]
     end
 
-    playlist = open(params[:url]).read
+    playlist_body = open(params[:url]).read
+    playlist = Playlist.new( :body => playlist_body, :filetype => params[:url] =~ /.pls\b/i ? :pls : :m3u )
 
-    # support for .pls or .m3u playlists
-    if params[:url] =~ /.pls\b/i
-      playlist.split("\n").find{ |line| line.match /File\d/ }.split('=')[1] << ';' # trailing semi-colon to force streaming
-    else
-      playlist.split("\n").find{ |line| line =~ URI::regexp(['http', 'https']) }
-    end
+    playlist.get_stream_url
   end
 end
 
