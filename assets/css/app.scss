@@ -1,5 +1,9 @@
 @import 'bourbon/bourbon';
 
+$wedgewood: #5377A6;
+$steel-blue: #5E87BD;
+$pickled-bluewood: #243344;
+
 @include keyframes(loading-throb) {
   0%   { @include transform(scale(1)); }
   50%   { @include transform(scale(1.5)); }
@@ -55,15 +59,20 @@ button {
 }
 
 .btn {
+  @include transition(all 0.25s linear);
   border-radius: 3px;
   border: none;
-  background: #5377A6;
+  background-color: $wedgewood;
   color: #FFF;
   text-shadow: rgba(0,0,0,0.25);
   font: inherit;
   text-decoration: none;
   cursor: pointer;
   padding: 1.5em;
+
+  &:hover, &:focus {
+    background-color: $steel-blue;
+  }
 }
 
 .addon-field {
@@ -106,14 +115,15 @@ button {
 }
 
 .best-station {
-  border-top: 1px solid rgba(255,255,255,0.15);
+  border-radius: 3px;
+  background: $pickled-bluewood;
   font-size: 125%;
   line-height: 1;
-  padding-top: 1em;
+  padding: 1.5em;
   margin-top: 1em;
 
   .best-station-loading {
-    margin-top: 2em;
+    margin: 2em 0;
     display: inline-block;
     position: relative;
 
