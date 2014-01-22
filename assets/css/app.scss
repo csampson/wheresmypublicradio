@@ -3,6 +3,8 @@
 $wedgewood: #5377A6;
 $steel-blue: #5E87BD;
 $pickled-bluewood: #243344;
+$matrix: #A65353;
+$contessa: #BE6060;
 
 @include keyframes(loading-throb) {
   0%   { @include transform(scale(1)); }
@@ -72,6 +74,14 @@ button {
 
   &:hover, &:focus {
     background-color: $steel-blue;
+  }
+}
+
+.btn-red {
+  background-color: $matrix;
+
+  &:hover, &:focus {
+    background-color: $contessa;
   }
 }
 
@@ -186,7 +196,7 @@ button {
   }
 
   .best-station-listen {
-    background: #A65353;
+    @extend .btn-red;
     margin: 1em 0 0;
     @include flex(1 100%);
   }
