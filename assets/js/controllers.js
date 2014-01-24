@@ -1,20 +1,25 @@
 angular.module('wheresMyNpr.controllers', [])
   .controller('StationFinderCtrl', ['$scope', '$http', 'geolocation', function($scope, $http, geolocation) {
+    $scope.toggleLoading = function() {
+      $scope.loading = !$scope.loading;
+      $scope.loaded = !$scope.loading;
+    };
+
     $scope.findByZip = function() {
-      $scope.loading = true;
+      $scope.toggleLoading();
 
       $http.get('/best_station', { params: { zipcode: $scope.zipcode }}).success(function(response) {
         $scope.bestStation = response;
-        $scope.loading = false;
+        $scope.toggleLoading();
       });
     };
 
     $scope.findByLocation = function() {
-      $scope.loading = true;
+      $scope.toggleLoading();
 
       geolocation.getPosition().then(function(result) {
         if ('error' in result) {
-          $scope.loading = false;
+          $scope.toggleLoading();
           $scope.errorMessage = 'There was a problem determing your current geolocation.';
 
           return;
@@ -22,7 +27,7 @@ angular.module('wheresMyNpr.controllers', [])
 
         $http.get('/best_station', { params: result}).success(function(response) {
           $scope.bestStation = response;
-          $scope.loading = false;
+          $scope.toggleLoading();
         });
       });
     };
