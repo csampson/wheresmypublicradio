@@ -4,7 +4,7 @@ class StationParser
   attr_accessor :stations
 
   def initialize(options)
-    @stations = XmlSimple.xml_in(options[:stations_xml])['station']
+    @stations = XmlSimple.xml_in(options[:stations_xml])['station'].reject(&:empty?)
   end
 
   def get_strongest_station

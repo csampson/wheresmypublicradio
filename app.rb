@@ -39,7 +39,7 @@ class App < Sinatra::Base
     api_response = open("http://api.npr.org/stations?#{api_params_encoded}").read
     station_parser = StationParser.new(:stations_xml => api_response)
 
-    station_parser.get_strongest_station.to_json
+    station_parser.get_strongest_station.to_json unless station_parser.stations.empty?
   end
 
   get '/listen' do

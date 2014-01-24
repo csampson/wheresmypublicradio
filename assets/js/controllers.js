@@ -5,13 +5,24 @@ angular.module('wheresMyNpr.controllers', [])
       $scope.loaded = !$scope.loading;
     };
 
-    $scope.findByZip = function() {
-      $scope.toggleLoading();
+    $scope.findBestStation = function(params) {
+      $scope.bestStation = $scope.errorMessage = null;
 
-      $http.get('/best_station', { params: { zipcode: $scope.zipcode }}).success(function(response) {
-        $scope.bestStation = response;
+      $http.get('/best_station', params).success(function(response) {
+        if(!response) {
+          $scope.errorMessage = "We couldn't find any member stations in your area.";
+        }
+        else {
+          $scope.bestStation = response;
+        }
+
         $scope.toggleLoading();
       });
+    };
+
+    $scope.findByZip = function() {
+      $scope.toggleLoading();
+      $scope.findBestStation({params: {zipcode: $scope.zipcode}});
     };
 
     $scope.findByLocation = function() {
@@ -25,10 +36,7 @@ angular.module('wheresMyNpr.controllers', [])
           return;
         }
 
-        $http.get('/best_station', { params: result}).success(function(response) {
-          $scope.bestStation = response;
-          $scope.toggleLoading();
-        });
+        $scope.findBestStation({params: result});
       });
     };
   }]);
