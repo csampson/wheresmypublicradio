@@ -48,6 +48,7 @@ body {
   border-radius: 3px;
   border: none;
   background: #F4F9FD;
+  text-shadow: none;
   padding: 1.5em;
 
   // remove increment/decrement buttons
@@ -109,6 +110,26 @@ button {
     border-bottom-left-radius: 0;
     width: 4em;
     display: table-cell;
+  }
+}
+
+.placeheld-field {
+  cursor: text;
+  position: relative;
+
+  .placeheld-field-placeholder {
+    color: #999;
+    text-shadow: none;
+    line-height: 1;
+    position: absolute;
+    left: 1em;
+    top: 50%;
+    margin-top: -0.5em;
+  }
+
+  .placeheld-field-input[data-placeheld='false'] ~ .placeheld-field-placeholder,
+  .placeheld-field-input[data-placeheld='true']:focus ~ .placeheld-field-placeholder {
+    visibility: hidden;
   }
 }
 

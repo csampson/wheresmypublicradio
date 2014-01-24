@@ -18,7 +18,11 @@
 
   <form name='searchForm'>
     <span class='search-by-zip-field addon-field'>
-      <input name='zipcode' type='number' placeholder='Enter your zip code' data-ng-model='zipcode' min='0' required />
+      <label class='placeheld-field' data-placeheld-field>
+        <input class='placeheld-field-input' name='zipcode' type='number' data-ng-model='zipcode' min='0' required />
+        <span class='placeheld-field-placeholder'>Enter your zip code</span>
+      </label>
+
       <a data-ng-disabled='searchForm.$invalid' data-ng-click='findByZip()' role='button'><i class='fa-search fa'></i><span class='hidden-text'>Search</span></a>
     </span>
 
