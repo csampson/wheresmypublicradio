@@ -13,6 +13,13 @@ angular.module('wheresMyNpr.controllers', [])
       $scope.loading = true;
 
       geolocation.getPosition().then(function(result) {
+        if ('error' in result) {
+          $scope.loading = false;
+          $scope.errorMessage = 'There was a problem determing your current geolocation.';
+
+          return;
+        }
+
         $http.get('/best_station', { params: result}).success(function(response) {
           $scope.bestStation = response;
           $scope.loading = false;

@@ -9,8 +9,10 @@ angular.module('wheresMyNpr.services', [])
             deferred.resolve({ latitude: geoposition.coords.latitude, longitude: geoposition.coords.longitude });
           },
           function(error) {
-            // TODO error messages
             deferred.resolve({ error: error });
+          },
+          {
+            timeout: 15000
           }
         );
 
