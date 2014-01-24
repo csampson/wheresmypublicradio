@@ -31,7 +31,7 @@ angular.module('wheresMyNpr.controllers', [])
       geolocation.getPosition().then(function(result) {
         if ('error' in result) {
           $scope.toggleLoading();
-          $scope.errorMessage = 'There was a problem determing your current geolocation.';
+          $scope.errorMessage = 'There was a problem determining your current geolocation.';
 
           return;
         }
