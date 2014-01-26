@@ -33,6 +33,7 @@ body {
   color: #F4F9FD;
   text-shadow: 0 1px rgba(0,0,0,0.5);
   font-family: "Roboto Condensed", sans-serif;
+  font-size: 85%;
   text-align: center;
   display: table;
   padding: 1em;
@@ -54,6 +55,10 @@ body {
   // remove increment/decrement buttons
   &::-webkit-inner-spin-button {
     -webkit-appearance: none;
+  }
+
+  &:invalid {
+    box-shadow: none;
   }
 }
 
@@ -97,19 +102,25 @@ button {
   border-collapse: separate;
   display: table;
 
-  input {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+  .addon-field-input {
     width: 100%;
     display: table-cell;
+
+    input {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      width: 100%;
+    }
   }
 
-  [role="button"] {
-    @extend .btn;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    width: 4em;
+  .addon-field-append {
     display: table-cell;
+
+    button {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      padding: 1.5em;
+    }
   }
 }
 
@@ -163,6 +174,7 @@ button {
 }
 
 .search-by-zip-field {
+  width: 15em;
   display: inline-table;
   vertical-align: middle;
 

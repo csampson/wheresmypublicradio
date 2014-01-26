@@ -18,12 +18,14 @@
 
   <form name='searchForm'>
     <span class='search-by-zip-field addon-field'>
-      <label class='placeheld-field' data-placeheld-field>
-        <input class='placeheld-field-input' type='text' data-ng-model='zipcode' min='0' required />
-        <span class='placeheld-field-placeholder'>Enter your zip code</span>
-      </label>
+      <span class='addon-field-input'>
+        <label class='placeheld-field' data-placeheld-field>
+          <input class='placeheld-field-input' type='text' data-ng-model='zipcode' min='0' autocomplete='off' required />
+          <span class='placeheld-field-placeholder'>Enter your zip code</span>
+        </label>
+      </span>
 
-      <a data-ng-disabled='searchForm.$invalid' data-ng-click='findByZip()' role='button'><i class='fa-search fa'></i><span class='hidden-text'>Search</span></a>
+      <span class='addon-field-append'><button data-ng-disabled='searchForm.$invalid' data-ng-click='findByZip()' type='button'><i class='fa-search fa'></i><span class='hidden-text'>Search</span></button></span>
     </span>
 
     <span class='or-separator'>&mdash; or &mdash;</span>
