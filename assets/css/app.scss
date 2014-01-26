@@ -6,6 +6,12 @@ $pickled-bluewood: #243344;
 $matrix: #A65353;
 $contessa: #BE6060;
 
+%list-reset {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 // Apply rules based on loose screen sizes(widths)
 @mixin respond-to($screen-size) {
   @if $screen-size == small-screen {
@@ -255,7 +261,9 @@ button {
   }
 
   .best-station-controls {
+    @extend %list-reset;
     @include display(flex);
+    @include box-pack(center);
     @include flex-flow(row wrap);
   }
 
@@ -281,5 +289,10 @@ button {
     margin-top: 1em;
     margin-left: 0;
     @include flex(1 100%);
+
+    .no-flexbox & {
+      margin-top: 0;
+      margin-left: 1em;
+    }
   }
 }

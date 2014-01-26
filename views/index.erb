@@ -8,6 +8,7 @@
   <%= css :app %>
   <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css' />
   <link href='//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css' rel='stylesheet' type='text/css' />
+  <script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js'></script>
   <script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js'></script>
 </head>
 <body data-ng-controller='StationFinderCtrl'>
@@ -42,11 +43,11 @@
       <span class='best-station-label'>{{bestStation.label}}</span>
     </p>
 
-    <div class='best-station-controls'  data-ng-if='bestStation && loaded'> <% #decide on a semantic element later %>
+    <menu class='best-station-controls'  data-ng-if='bestStation && loaded'>
       <a data-ng-if='bestStation.home_page' data-ng-href='{{bestStation.home_page}}' class='best-station-visit'><i class='fa-globe fa'></i> Visit</a>
       <a data-ng-if='bestStation.pledge_page' data-ng-href='{{bestStation.pledge_page}}' class='best-station-pledge'><i class='fa-heart fa'></i> Pledge</a>
       <button data-ng-if='bestStation.stream_url' class='best-station-listen' type='button' data-stream-url='{{bestStation.stream_url}}' data-radio-streamer></button>
-    </div>
+    </menu>
   </section>
 
   <%= js :app %>
