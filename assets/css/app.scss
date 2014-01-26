@@ -262,9 +262,12 @@ button {
 
   .best-station-controls {
     @extend %list-reset;
-    @include display(flex);
-    @include box-pack(center);
-    @include flex-flow(row wrap);
+
+    .flexbox & {
+      @include display(flex);
+      @include box-pack(center);
+      @include flex-flow(row wrap);
+    }
   }
 
   // :)
@@ -281,14 +284,20 @@ button {
     font-size: 80%;
     padding-top: 1em;
     padding-bottom: 1em;
-    @include flex(1);
+
+    .flexbox & {
+      @include flex(1);
+    }
   }
 
   .best-station-listen {
     @extend .btn-red;
     margin-top: 1em;
     margin-left: 0;
-    @include flex(1 100%);
+
+    .flexbox & {
+      @include flex(1 100%);
+    }
 
     .no-flexbox & {
       margin-top: 0;
