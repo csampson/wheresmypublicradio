@@ -288,6 +288,15 @@ button {
     .flexbox & {
       @include flex(1);
     }
+
+    @include respond-to(small-screen) {
+      .no-flexbox & {
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: 1em;
+        display: block;
+      }
+    }
   }
 
   .best-station-listen {
@@ -302,6 +311,10 @@ button {
     .no-flexbox & {
       margin-top: 0;
       margin-left: 1em;
+
+      @include respond-to(small-screen) {
+        margin-left: 0;
+      }
     }
   }
 }
