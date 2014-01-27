@@ -78,13 +78,18 @@ button {
   }
 }
 
+.hidden-content {
+  position: absolute;
+  left: -9999em;
+}
+
 .btn {
-  @include transition(all 0.25s linear);
+  // @include transition(all 0.25s linear);
   border-radius: 3px;
   border: none;
   background-color: $wedgewood;
   color: #FFF;
-  text-shadow: rgba(0,0,0,0.25);
+  text-shadow: 0 1px rgba(0,0,0,0.25);
   font: inherit;
   text-decoration: none;
   cursor: pointer;
@@ -148,11 +153,6 @@ button {
   .placeheld-field-input[data-placeheld='true']:focus ~ .placeheld-field-placeholder {
     visibility: hidden;
   }
-}
-
-.hidden-text {
-  position: absolute;
-  left: -9999em;
 }
 
 .app-hero {
@@ -316,5 +316,10 @@ button {
         margin-left: 0;
       }
     }
+  }
+
+  .radio-streamer-jplayer {
+    @extend .hidden-content;
+    img { display: none; }
   }
 }

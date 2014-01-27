@@ -1,31 +1,38 @@
 angular.module('wheresMyNpr.directives', [])
-  .directive('radioStreamer', ['$http', '$sce', function($http, $sce) {
+  .directive('radioStreamer', ['$http', function($http) {
     return {
-      template: "<i class='{{actionIcon}}'></i> Listen <audio data-ng-src='{{source}}'></audio>",
+      template: "<i class='{{actionIcon}}'></i> Listen <span class='radio-streamer-jplayer'></span>",
       link: function(scope, element, attributes) {
         scope.actionIcon = 'fa-play fa';
 
         scope.play = function() {
           scope.playing = true;
           scope.actionIcon = 'fa-pause fa';
-          element.find('audio')[0].play();
+          element.find('.radio-streamer-jplayer').jPlayer('play');
         };
 
         scope.pause = function() {
           scope.playing = false;
           scope.actionIcon = 'fa-play fa';
-          element.find('audio')[0].pause();
+          element.find('.radio-streamer-jplayer').jPlayer('pause');
         };
 
         scope.$watch('source', function(source) {
           if(source) scope.play();
         });
 
+        element.find('.radio-streamer-jplayer').jPlayer({
+          swfPath: '/',
+          supplied: 'mp3',
+          solution: 'flash, html', // prefer flash, ironically - there's an issue with streaming these mp3 endpoints in non-webkit browsers
+          wmode: 'window'
+        });
+
         element.on('click', function() {
           if(!scope.source) {
             $http.get('/listen', { params: { url: attributes.streamUrl }}).success(function(response) {
-              // TODO: handle errors
-              scope.source = $sce.trustAsResourceUrl(response);
+              scope.source = response;
+              element.find('.radio-streamer-jplayer').jPlayer('setMedia', { mp3: scope.source });
             });
           }
           else {
