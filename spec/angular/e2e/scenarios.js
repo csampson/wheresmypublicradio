@@ -1,4 +1,5 @@
-var fs = require('fs');
+var path = require('path'),
+    fs   = require('fs');
 
 describe('wheresMyNpr', function() {
   beforeEach(function() {
@@ -17,7 +18,7 @@ describe('wheresMyNpr', function() {
   });
 
   it('should be able to display the best station by geolocation', function() {
-    var geomockScript = fs.readFileSync('./geomock.js', 'utf-8');
+    var geomockScript = fs.readFileSync(path.join(__dirname, '/geomock.js'), 'utf-8');
 
     browser.executeScript(geomockScript);
     browser.executeScript('navigator.geolocation.waypoints = [{ coords: {  longitude: -90.0500, latitude: 29.9667 } }];'); // mock nola's cooardinates
