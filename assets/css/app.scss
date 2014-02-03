@@ -27,7 +27,7 @@
 }
 
 .search-by-zip-field {
-  width: 15em;
+  width: 18em;
   display: inline-table;
   vertical-align: middle;
 
@@ -43,7 +43,7 @@
 }
 
 .search-by-geolocation {
-  width: 15em;
+  width: 18em;
   vertical-align: middle;
 
   @include respond-to(small-screen) {
