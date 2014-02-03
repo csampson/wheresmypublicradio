@@ -66,6 +66,16 @@ describe('wheresMyNpr controllers', function() {
 
         expect(scope.loading).toBe(false);
       });
+
+      it('should reflect as NOT loading when an error is returned', function() {
+        $httpBackend.whenGET(/^\/best_station*/).respond({});
+
+        scope.zipcode = 'wamp';
+        scope.findByZip();
+        $httpBackend.flush();
+
+        expect(scope.loading).toBe(false);
+      });
     });
   });
 });
