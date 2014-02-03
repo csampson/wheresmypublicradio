@@ -1,1 +1,1 @@
-angular.module('wheresMyNpr', ['wheresMyNpr.controllers', 'wheresMyNpr.services', 'wheresMyNpr.directives']);
+angular.module('app', ['app.controllers', 'app.services', 'app.directives']);

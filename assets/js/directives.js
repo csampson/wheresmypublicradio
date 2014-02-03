@@ -1,4 +1,4 @@
-angular.module('wheresMyNpr.directives', [])
+angular.module('app.directives', [])
   .directive('radioStreamer', ['$http', function($http) {
     return {
       template: "<i class='{{actionIcon}}'></i> Listen <span class='radio-streamer-jplayer'></span>",

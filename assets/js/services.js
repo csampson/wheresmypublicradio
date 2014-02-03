@@ -1,4 +1,4 @@
-angular.module('wheresMyNpr.services', [])
+angular.module('app.services', [])
   .factory('geolocation', ['$q', function($q) {
     return {
       getPosition: function() {

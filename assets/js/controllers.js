@@ -1,4 +1,4 @@
-angular.module('wheresMyNpr.controllers', [])
+angular.module('app.controllers', [])
   .controller('StationFinderCtrl', ['$scope', '$http', 'geolocation', function($scope, $http, geolocation) {
     $scope.toggleLoading = function() {
       $scope.loading = !$scope.loading;

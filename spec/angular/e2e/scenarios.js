@@ -1,7 +1,7 @@
 var path = require('path'),
     fs   = require('fs');
 
-describe('wheresMyNpr', function() {
+describe('app', function() {
   beforeEach(function() {
     browser.get('http://localhost:9292');
   });

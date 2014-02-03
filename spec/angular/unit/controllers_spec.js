@@ -1,5 +1,5 @@
-describe('wheresMyNpr controllers', function() {
-  beforeEach(module('wheresMyNpr'));
+describe('app controllers', function() {
+  beforeEach(module('app'));
 
   describe('StationFinderCtrl', function() {
     var StationFinderCtrl, injector, scope, $rootScope, $controller, $q, $httpBackend, geolocation;
