@@ -4,14 +4,31 @@ GEM
     bourbon (3.2.0.beta.2)
       sass (>= 3.3.0.rc.2)
       thor
+    coderay (1.1.0)
     diff-lcs (1.2.5)
     dotenv (0.9.0)
     ffi (1.9.3)
+    formatador (0.2.4)
+    guard (1.8.2)
+      formatador (>= 0.2.4)
+      listen (>= 1.0.0)
+      lumberjack (>= 1.0.2)
+      pry (>= 0.9.10)
+      thor (>= 0.14.6)
+    guard-rspec (3.1.0)
+      guard (>= 1.8)
+      rspec (~> 2.13)
     jsmin (1.0.1)
     listen (1.1.6)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
       rb-kqueue (>= 0.2)
+    lumberjack (1.0.4)
+    method_source (0.8.2)
+    pry (0.9.12.6)
+      coderay (~> 1.0)
+      method_source (~> 0.8)
+      slop (~> 3.4)
     rack (1.5.2)
     rack-protection (1.5.2)
       rack
@@ -41,6 +58,7 @@ GEM
       rack-test
       sinatra
       tilt (>= 1.3.0, < 2.0)
+    slop (3.4.7)
     thor (0.18.1)
     tilt (1.4.1)
     xml-simple (1.1.3)
@@ -51,6 +69,8 @@ PLATFORMS
 DEPENDENCIES
   bourbon (~> 3.2.0.beta.2)
   dotenv
+  guard
+  guard-rspec
   rack
   rspec
   sass

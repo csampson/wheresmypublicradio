@@ -3,8 +3,8 @@ require 'sinatra/assetpack'
 require 'open-uri'
 require 'json'
 
-require_relative './playlist'
-require_relative './station_parser'
+require_relative './lib/playlist'
+require_relative './lib/station_parser'
 
 class App < Sinatra::Base
   register Sinatra::AssetPack

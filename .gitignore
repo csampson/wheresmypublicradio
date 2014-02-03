@@ -1,4 +1,5 @@
 Capfile
 .env
 .sass-cache
+tmp
 

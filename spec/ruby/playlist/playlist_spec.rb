@@ -1,4 +1,4 @@
-require_relative '../../../playlist'
+require_relative '../../../lib/playlist'
 
 describe Playlist do
   context 'given a m3u file' do

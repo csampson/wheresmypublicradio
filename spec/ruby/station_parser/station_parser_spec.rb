@@ -1,4 +1,4 @@
-require_relative '../../../station_parser'
+require_relative '../../../lib/station_parser'
 
 describe StationParser do
   it 'can initialize with an xml api response' do
