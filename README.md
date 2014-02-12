@@ -51,6 +51,7 @@ sh scripts/ng_unit.sh
 End-to-end testing using Protractor:
 
 ```
+webdriver-manager start
 sh scripts/ng_e2e.sh
 ```
 
