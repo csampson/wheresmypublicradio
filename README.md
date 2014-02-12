@@ -54,4 +54,4 @@ If you see something you'd like to change/improve, feel free to [create an issue
 
 ## License
 
-[MIT](http://opensource.org/licenses/MIT)
+[GPL](http://opensource.org/licenses/gpl-3.0.html)
