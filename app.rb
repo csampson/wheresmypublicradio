@@ -8,6 +8,9 @@ class App < Sinatra::Base
 
     css :app, ['css/app.css']
     js  :app, ['js/app.js', 'js/controllers.js', 'js/services.js', 'js/directives.js']
+
+    css_compression :yui
+    js_compression  :uglify
   }
 
   set :scss, { :load_paths => [ "#{App.root}/assets/css" ] }

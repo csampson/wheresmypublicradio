@@ -3,6 +3,7 @@ require 'json'
 require 'dotenv'
 require 'sinatra'
 require 'sinatra/assetpack'
+require 'sass'
 
 if ENV['RACK_ENV'] == 'development'
   require 'pry'
