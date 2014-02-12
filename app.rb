@@ -1,15 +1,3 @@
-require 'sinatra'
-require 'sinatra/assetpack'
-require 'open-uri'
-require 'json'
-
-if ENV['RACK_ENV'] == 'development'
-  require 'pry'
-end
-
-require_relative './lib/playlist'
-require_relative './lib/station_parser'
-
 class App < Sinatra::Base
   register Sinatra::AssetPack
 
@@ -58,4 +46,3 @@ class App < Sinatra::Base
     playlist.get_stream_url
   end
 end
-
