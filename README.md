@@ -36,16 +36,22 @@ You can use Guard to test RSpec specs in the background:
 bundle exec guard
 ```
 
+Or manually run tests within the Guard shell:
+
+```
+all rspec
+```
+
 Using Karma to automatically handle AngularJS unit tests:
 
 ```
-karma start spec/angular/unit/karma.conf.js
+sh scripts/ng_unit.sh
 ```
 
 End-to-end testing using Protractor:
 
 ```
-protractor spec/angular/e2e/protractor.conf.js
+sh scripts/ng_e2e.sh
 ```
 
 ## Contributing
