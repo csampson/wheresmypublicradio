@@ -71,6 +71,7 @@ DEPENDENCIES
   dotenv
   guard
   guard-rspec
+  pry
   rack
   rspec
   sass

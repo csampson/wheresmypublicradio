@@ -3,6 +3,10 @@ require 'sinatra/assetpack'
 require 'open-uri'
 require 'json'
 
+if ENV['RACK_ENV'] == 'development'
+  require 'pry'
+end
+
 require_relative './lib/playlist'
 require_relative './lib/station_parser'
 
