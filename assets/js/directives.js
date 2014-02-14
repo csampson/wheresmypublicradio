@@ -55,4 +55,24 @@ angular.module('app.directives', [])
         input.on('change', function() { input.attr('data-placeheld', !input.val()); });
       }
     }
-  });
+  })
+ .directive('locationAutocomplete', function() {
+  return {
+    scope: {
+      location: '='
+    },
+    link: function(scope, element, attrs) {
+      var input = element[0];
+
+      scope.gPlace = new google.maps.places.Autocomplete(input);
+      scope.gPlace.setComponentRestrictions({country:'us'});
+
+      google.maps.event.addListener(scope.gPlace, 'place_changed', function() {
+        var location = scope.gPlace.getPlace().geometry.location;
+
+        scope.location = { longitude: location.lng(), latitude: location.lat() };
+        scope.$apply();
+      });
+    }
+  };
+});

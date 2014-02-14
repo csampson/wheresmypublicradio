@@ -27,10 +27,10 @@
   }
 }
 
-.search-by-zip-field {
-  width: 18em;
-  display: inline-table;
-  vertical-align: middle;
+.location-field {
+  width: 30em;
+  margin: 0 auto 1em;
+  display: table;
 
   input::-webkit-outer-spin-button {
     margin: 0;
@@ -43,19 +43,11 @@
   }
 }
 
-.search-by-geolocation {
-  width: 18em;
-  vertical-align: middle;
+.submit-form {
+  width: 30em;
 
   @include respond-to(small-screen) {
     width: 100%;
-  }
-}
-
-// make this more specific
-.or-separator {
-  @include respond-to(small-screen) {
-    display: none;
   }
 }
 
@@ -64,8 +56,13 @@
   background: $pickled-bluewood;
   font-size: 125%;
   line-height: 1;
+  width: 24em;
   padding: 1.5em;
-  margin-top: 0.8em;
+  margin: 0.8em auto 0;
+
+  @include respond-to(small-screen) {
+    width: 100%;
+  }
 
   .best-station-loading {
     margin: 2em 0;

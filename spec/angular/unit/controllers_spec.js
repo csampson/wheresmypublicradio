@@ -26,7 +26,7 @@ describe('app controllers', function() {
       $httpBackend.whenGET(/^\/best_station*/).respond({ label: '89.9 FM - WWNO' });
 
       spyOn(geolocation, 'getPosition').andCallFake(getFakeLocation);
-      scope.findByLocation();
+      scope.findStation();
       $httpBackend.flush();
 
       expect(scope.bestStation).toEqual({label: '89.9 FM - WWNO'});
@@ -36,23 +36,16 @@ describe('app controllers', function() {
       $httpBackend.whenGET(/^\/best_station*/).respond(undefined);
 
       spyOn(geolocation, 'getPosition').andCallFake(getFakeLocation);
-      scope.findByLocation();
+      scope.findStation();
       $httpBackend.flush();
 
       expect(scope.errorMessage).toBe("We couldn't find any member stations in your area.");
     });
 
     describe('loading state', function() {
-      it('should reflect as loading when searching for stations by zipcode', function() {
-        scope.zipcode = 70130;
-        scope.findByZip();
-
-        expect(scope.loading).toBe(true);
-      });
-
       it('should reflect as loading when searching for stations by geolocation', function() {
         spyOn(geolocation, 'getPosition').andCallFake(getFakeLocation);
-        scope.findByLocation();
+        scope.findStation();
 
         expect(scope.loading).toBe(true);
       });
@@ -60,8 +53,8 @@ describe('app controllers', function() {
       it('should reflect as NOT loading when a best station response is returned', function() {
         $httpBackend.whenGET(/^\/best_station*/).respond({});
 
-        scope.zipcode = 70130;
-        scope.findByZip();
+        spyOn(geolocation, 'getPosition').andCallFake(getFakeLocation);
+        scope.findStation();
         $httpBackend.flush();
 
         expect(scope.loading).toBe(false);
@@ -70,8 +63,8 @@ describe('app controllers', function() {
       it('should reflect as NOT loading when an error is returned', function() {
         $httpBackend.whenGET(/^\/best_station*/).respond({});
 
-        scope.zipcode = 'wamp';
-        scope.findByZip();
+        scope.geolocation = {};
+        scope.findStation();
         $httpBackend.flush();
 
         expect(scope.loading).toBe(false);

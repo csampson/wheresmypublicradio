@@ -21,14 +21,10 @@ class App < Sinatra::Base
 
   get '/best_station' do
     content_type :json
-    api_params = {:apiKey => ENV['API_KEY']}
 
-    if params['zipcode']
-      api_params[:zip] = params['zipcode']
-    else
-      api_params[:lon] = params['longitude']
-      api_params[:lat] = params['latitude']
-    end
+    api_params = {:apiKey => ENV['API_KEY']}
+    api_params[:lon] = params['longitude']
+    api_params[:lat] = params['latitude']
 
     api_params_encoded = ::URI.encode_www_form(api_params)
     api_response = open("http://api.npr.org/stations?#{api_params_encoded}").read

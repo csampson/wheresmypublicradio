@@ -8,29 +8,7 @@ angular.module('app.controllers', [])
       $scope.bestStation = $scope.errorMessage  = null;
     };
 
-    $scope.findBestStation = function(params) {
-      $http.get('/best_station', params).success(function(response) {
-        if(!response) {
-          $scope.errorMessage = "We couldn't find any member stations in your area.";
-        }
-        else {
-          $scope.bestStation = response;
-        }
-
-        $scope.toggleLoading();
-      });
-    };
-
-    $scope.findByZip = function() {
-      $scope.clearData();
-      $scope.toggleLoading();
-      $scope.findBestStation({params: {zipcode: $scope.zipcode}});
-    };
-
-    $scope.findByLocation = function() {
-      $scope.clearData();
-      $scope.toggleLoading();
-
+    $scope.getGeolocation = function() {
       geolocation.getPosition().then(function(result) {
         if ('error' in result) {
           $scope.toggleLoading();
@@ -39,7 +17,27 @@ angular.module('app.controllers', [])
           return;
         }
 
-        $scope.findBestStation({params: result});
+        $scope.geolocation = result;
+      });
+    };
+
+    $scope.findStation = function() {
+      $scope.clearData();
+      $scope.toggleLoading();
+      $scope.findBestStation($scope.geolocation);
+    };
+
+    // TODO: station finder service
+    $scope.findBestStation = function(geolocation) {
+      $http.get('/best_station', {params: geolocation}).success(function(response) {
+        if(!response) {
+          $scope.errorMessage = "We couldn't find any member stations in your area.";
+        }
+        else {
+          $scope.bestStation = response;
+        }
+
+        $scope.toggleLoading();
       });
     };
   }]);

@@ -11,6 +11,7 @@
   <script src='//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js'></script>
   <script src='//code.jquery.com/jquery-1.10.1.min.js'></script>
   <script src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js'></script>
+  <script src='//maps.googleapis.com/maps/api/js?libraries=places&amp;sensor=false'></script>
   <script src='//cdnjs.cloudflare.com/ajax/libs/jplayer/2.5.4/jquery.jplayer.min.js'></script>
 </head>
 <body data-ng-controller='StationFinderCtrl'>
@@ -20,20 +21,23 @@
   </header>
 
   <form name='searchForm'>
-    <span class='search-by-zip-field addon-field'>
+    <span class='location-field addon-field'>
       <span class='addon-field-input'>
         <label class='placeheld-field' data-placeheld-field>
-          <input class='placeheld-field-input' type='number' data-ng-model='zipcode' min='0' autocomplete='off' required />
-          <span class='placeheld-field-placeholder'>Enter your zip code</span>
+          <input data-location-autocomplete data-location='geolocation' class='placeheld-field-input' type='text' placeholder='' autocomplete='off' />
+          <span class='placeheld-field-placeholder'>Enter a location</span>
         </label>
       </span>
 
-      <span class='addon-field-append'><button data-ng-disabled='searchForm.$invalid' data-ng-click='findByZip()' type='submit'><i class='fa-search fa'></i><span class='hidden-content'>Search</span></button></span>
+      <span class='addon-field-append'>
+        <button data-ng-click='getGeolocation()' type='button'><i class='fa-location-arrow fa'></i><span class='hidden-content'>Use my geolocation</span></button>
+      </span>
     </span>
 
-    <span class='or-separator'>&mdash; or &mdash;</span>
-
-    <button class='search-by-geolocation' type='button' data-ng-click='findByLocation()'>Use my geolocation</button>
+    <button data-ng-click='findStation()' data-ng-disabled='!geolocation' class='submit-form' type='submit'>
+      <i class='fa-search fa'></i>
+      Find a station
+    </button>
   </form>
 
   <section class='best-station' data-ng-if='loading || bestStation || errorMessage'>
