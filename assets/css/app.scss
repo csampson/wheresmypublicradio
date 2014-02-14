@@ -36,6 +36,16 @@
     margin: 0;
   }
 
+  html.no-geolocation & {
+    .addon-field-input input {
+      border-radius: 3px;
+    }
+
+    .addon-field-append {
+      display: none;
+    }
+  }
+
   @include respond-to(small-screen) {
     width: 100%;
     display: table;
