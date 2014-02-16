@@ -2,6 +2,9 @@ angular.module('app.directives', [])
   .directive('radioStreamer', ['$http', function($http) {
     return {
       template: "<i class='{{actionIcon}}'></i> Listen <span class='radio-streamer-jplayer'></span>",
+      scope: {
+        streamUrl: '='
+      },
       link: function(scope, element, attributes) {
         scope.actionIcon = 'fa-play fa';
 
@@ -30,7 +33,7 @@ angular.module('app.directives', [])
 
         element.on('click', function() {
           if(!scope.source) {
-            $http.get('/listen', { params: { url: attributes.streamUrl }}).success(function(response) {
+            $http.get('/listen', { params: { url: scope.streamUrl }}).success(function(response) {
               scope.source = response;
               element.find('.radio-streamer-jplayer').jPlayer('setMedia', { mp3: scope.source });
             });
