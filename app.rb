@@ -42,6 +42,15 @@ class App < Sinatra::Base
     playlist_body = open(params[:url]).read
     playlist = Playlist.new( :body => playlist_body, :filetype => params[:url] =~ /.pls\b/i ? :pls : :m3u )
 
-    playlist.get_stream_url
+    playlist_url = playlist.get_stream_url
+
+    # Verify source supports appending /; for forced streaming
+    begin
+      open playlist_url
+    rescue OpenURI::HTTPError => error
+      playlist_url.gsub(/\/;$/, '')
+    rescue Net::HTTPBadResponse => error # handle legit response('ICY 200 OK')
+      playlist_url
+    end
   end
 end
