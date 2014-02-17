@@ -16,6 +16,7 @@ module.exports = function(config) {
     files: [
       'http://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js',
       'http://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular-mocks.js',
+      'http://maps.googleapis.com/maps/api/js?libraries=places&amp;sensor=false',
       '../../../assets/js/*.js',
       './controllers_spec.js'
     ],

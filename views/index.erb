@@ -24,7 +24,7 @@
     <span class='location-field addon-field'>
       <span class='addon-field-input'>
         <label class='placeheld-field' data-placeheld-field>
-          <input data-location-autocomplete data-location='geolocation' class='placeheld-field-input' type='text' placeholder='' autocomplete='off' />
+          <input data-location-autocomplete data-location='geolocation' data-ng-model='location' class='placeheld-field-input' type='text' placeholder='' autocomplete='off' />
           <span class='placeheld-field-placeholder'>Enter a location</span>
         </label>
       </span>
@@ -34,7 +34,7 @@
       </span>
     </span>
 
-    <button data-ng-click='findStation()' data-ng-disabled='!geolocation' class='submit-form' type='submit'>
+    <button data-ng-click='findStation()' class='submit-form' type='submit'>
       <i class='fa-search fa'></i>
       Find a station
     </button>

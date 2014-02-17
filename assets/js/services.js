@@ -19,4 +19,25 @@ angular.module('app.services', [])
         return deferred.promise;
       }
     };
+  }])
+  .factory('geocoder', ['$q', function($q) {
+    var geocoder = new google.maps.Geocoder();
+
+    return {
+      geocode: function(location) {
+        var deferred = $q.defer();
+
+        geocoder.geocode({ 'address': location }, function(results, status) {
+          if (status === google.maps.GeocoderStatus.OK) {
+            var geolocation = results[0].geometry.location;
+            deferred.resolve({ longitude: geolocation.lng(), latitude: geolocation.lat() });
+          }
+          else {
+            deferred.resolve({ error: status });
+          }
+        });
+
+        return deferred.promise;
+      }
+    };
   }]);

@@ -21,4 +21,16 @@ describe('app', function() {
 
     expect($('.best-station-label').getText()).toBe('89.9 FM - WWNO');
   });
+
+  it('should be able to display the best station by manually-entered address', function() {
+    element(by.model('location')).sendKeys('70130');
+
+    $('.submit-form').click();
+
+    $('.best-station, .best-station-controls, .best-station-summary').isDisplayed().then(function(result) {
+      expect(result).toBe(true);
+    });
+
+    expect($('.best-station-label').getText()).toBe('89.9 FM - WWNO');
+  });
 });
