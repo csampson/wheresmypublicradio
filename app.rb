@@ -1,6 +1,10 @@
 class App < Sinatra::Base
   register Sinatra::AssetPack
 
+  configure :development do
+    register Sinatra::Reloader
+  end
+
   assets {
     serve '/css', {:from => 'assets/css'}
     serve '/js',  {:from => 'assets/js'}

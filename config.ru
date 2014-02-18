@@ -5,7 +5,8 @@ require 'sinatra'
 require 'sinatra/assetpack'
 require 'sass'
 
-if ENV['RACK_ENV'] == 'development'
+if development?
+  require 'sinatra/reloader'
   require 'pry'
 end
 
