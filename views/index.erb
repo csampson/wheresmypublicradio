@@ -25,7 +25,7 @@
       <span class='addon-field-input'>
         <label class='placeheld-field' data-placeheld-field>
           <input data-location-autocomplete data-location='geolocation' data-ng-model='location' class='placeheld-field-input' type='text' placeholder='' autocomplete='off' />
-          <span class='placeheld-field-placeholder'>Enter a location</span>
+          <span class='placeheld-field-placeholder' data-ng-hide='location === "My location"'>Enter a location</span>
         </label>
       </span>
 

@@ -40,4 +40,22 @@ angular.module('app.services', [])
         return deferred.promise;
       }
     };
+  }])
+  .factory('stationFinder', ['$q', '$http', function($q, $http) {
+    return {
+      findBestStation: function(geolocation) {
+        var deferred = $q.defer();
+
+        $http.get('/best_station', {params: geolocation}).success(function(response) {
+          if(!response) {
+            deferred.resolve({ error: "We couldn't find any member stations in your area." });
+          }
+          else {
+            deferred.resolve(response);
+          }
+        });
+
+        return deferred.promise;
+      }
+    };
   }]);

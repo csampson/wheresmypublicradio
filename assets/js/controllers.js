@@ -1,5 +1,5 @@
 angular.module('app.controllers', [])
-  .controller('StationFinderCtrl', ['$scope', '$http', 'geolocation', 'geocoder', function($scope, $http, geolocation, geocoder) {
+  .controller('StationFinderCtrl', ['$scope', '$http', 'geolocation', 'geocoder', 'stationFinder', function($scope, $http, geolocation, geocoder, stationFinder) {
     $scope.toggleLoading = function() {
       $scope.loading = !$scope.loading;
     };
@@ -18,45 +18,46 @@ angular.module('app.controllers', [])
         }
 
         $scope.geolocation = result;
+        $scope.location = 'My location';
       });
     };
 
     $scope.findStation = function() {
       $scope.clearData();
-      $scope.toggleLoading();
+      $scope.loading = true;
 
-      if(!$scope.geolocation) {
-        geocoder.geocode($scope.location).then(function(result) {
+      if($scope.geolocation) {
+        stationFinder.findBestStation($scope.geolocation).then(function(result) {
+          $scope.toggleLoading();
+
           if('error' in result) {
-            $scope.toggleLoading();
             $scope.errorMessage = "We couldn't find any member stations in your area.";
           }
           else {
-            $scope.geolocation = result;
-            $scope.findBestStation($scope.geolocation);
+            $scope.bestStation = result;
           }
         });
-      }
-      else {
-        $scope.findBestStation($scope.geolocation);
-      }
-    };
 
-    $scope.findBestStation = function(geolocation) {
-      $http.get('/best_station', {params: geolocation}).success(function(response) {
-        if(!response) {
+        return;
+      }
+
+      // if there's no stored geolocation, attempt to resolve one based on what user entered in the $scope.location field
+      geocoder.geocode($scope.location).then(function(result) {
+        if('error' in result) {
+          $scope.toggleLoading();
           $scope.errorMessage = "We couldn't find any member stations in your area.";
         }
         else {
-          $scope.bestStation = response;
+          $scope.geolocation = result;
+          $scope.findStation();
         }
-
-        $scope.toggleLoading();
       });
     };
 
     // clear out stored geolocation when location value changes
-    $scope.$watch('location', function() {
-      $scope.geolocation = null;
+    $scope.$watch('location', function(value) {
+      if(value !== 'My location') {
+        $scope.geolocation = null;
+      }
     });
   }]);
