@@ -12,6 +12,7 @@ gem 'bourbon', '~> 3.2.0.beta.2'
 
 group :development do
   gem 'pry'
+  gem 'pry-nav'
   gem 'guard'
   gem 'guard-rspec'
 end
