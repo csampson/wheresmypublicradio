@@ -1,4 +1,5 @@
 require 'open-uri'
+require 'net/http'
 require 'json'
 require 'dotenv'
 require 'sinatra'
