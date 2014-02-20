@@ -4,6 +4,7 @@ require 'json'
 require 'dotenv'
 require 'sinatra'
 require 'sinatra/assetpack'
+require 'yui/compressor'
 require 'sass'
 
 if development?

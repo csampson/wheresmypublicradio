@@ -6,6 +6,7 @@ gem 'dotenv'
 gem 'xml-simple'
 gem 'sinatra'
 gem 'sinatra-assetpack'
+gem 'yui-compressor'
 gem 'uglifier'
 gem 'sass'
 gem 'bourbon', '~> 3.2.0.beta.2'
@@ -17,4 +18,3 @@ group :development do
   gem 'guard'
   gem 'guard-rspec'
 end
-
