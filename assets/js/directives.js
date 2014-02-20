@@ -71,9 +71,13 @@ angular.module('app.directives', [])
       scope.gPlace.setComponentRestrictions({country:'us'});
 
       google.maps.event.addListener(scope.gPlace, 'place_changed', function() {
-        var location = scope.gPlace.getPlace().geometry.location;
+        var geometry = scope.gPlace.getPlace().geometry;
 
-        scope.location = { longitude: location.lng(), latitude: location.lat() };
+        if(!geometry) {
+          return;
+        }
+
+        scope.location = { longitude: geometry.location.lng(), latitude: geometry.location.lat() };
         scope.$apply();
       });
     }
