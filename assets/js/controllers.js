@@ -11,7 +11,6 @@ angular.module('app.controllers', [])
     $scope.getGeolocation = function() {
       geolocation.getPosition().then(function(result) {
         if ('error' in result) {
-          $scope.toggleLoading();
           $scope.errorMessage = 'There was a problem determining your current geolocation.';
 
           return;
