@@ -53,11 +53,11 @@ class App < Sinatra::Base
     endpoint_response = nil
 
     # Verify source supports appending /; for forced streaming
-    endpoint_http.request_get('/;') { |response| endpoint_response = response; next }
-
-    if endpoint_response.is_a?(Net::HTTPSuccess)
+    begin
+      endpoint_http.request_get('/;') { |response| throw response }
+    rescue Net::HTTPSuccess, Net::HTTPBadResponse # also handle legit but misunderstood ice/*cast response(e.g., 'ICY 200 OK')
       playlist_url
-    else
+    rescue
       playlist_url.gsub(/\/;$/, '')
     end
   end
