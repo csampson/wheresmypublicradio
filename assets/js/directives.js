@@ -55,7 +55,7 @@ angular.module('app.directives', [])
       link: function(scope, element, attributes) {
         var input = element.find('input'); // TODO: refactor this to leverage directive API
         input.attr('data-placeheld', !input.val());
-        input.on('change', function() { input.attr('data-placeheld', !input.val()); });
+        input.on('change blur', function() { input.attr('data-placeheld', !input.val()); });
       }
     }
   })
