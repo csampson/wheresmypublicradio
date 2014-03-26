@@ -12,7 +12,6 @@ angular.module('app.controllers', [])
       geolocation.getPosition().then(function(result) {
         if ('error' in result) {
           $scope.errorMessage = 'There was a problem determining your current geolocation.';
-
           return;
         }
 
@@ -30,27 +29,26 @@ angular.module('app.controllers', [])
           $scope.toggleLoading();
 
           if('error' in result) {
-            $scope.errorMessage = "We couldn't find any member stations in your area.";
+            $scope.errorMessage = result.error;
           }
           else {
             $scope.bestStation = result;
           }
         });
-
-        return;
       }
-
-      // if there's no stored geolocation, attempt to resolve one based on what user entered in the $scope.location field
-      geocoder.geocode($scope.location).then(function(result) {
-        if('error' in result) {
-          $scope.toggleLoading();
-          $scope.errorMessage = "We couldn't find any member stations in your area.";
-        }
-        else {
-          $scope.geolocation = result;
-          $scope.findStation();
-        }
-      });
+      else {
+        // if there's no stored geolocation, attempt to resolve one based on what user entered in the $scope.location field
+        geocoder.geocode($scope.location).then(function(result) {
+          if('error' in result) {
+            $scope.toggleLoading();
+            $scope.errorMessage = "We couldn't find any member stations in your area.";
+          }
+          else {
+            $scope.geolocation = result;
+            $scope.findStation();
+          }
+        });
+      }
     };
 
     // clear out stored geolocation when location value changes
