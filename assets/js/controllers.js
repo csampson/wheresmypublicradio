@@ -1,8 +1,6 @@
 angular.module('app.controllers', [])
   .controller('StationFinderCtrl', ['$scope', '$http', 'geolocation', 'geocoder', 'stationFinder', function($scope, $http, geolocation, geocoder, stationFinder) {
-    $scope.toggleLoading = function() {
-      $scope.loading = !$scope.loading;
-    };
+    $scope.stationFinder = stationFinder;
 
     $scope.clearData = function() {
       $scope.bestStation = $scope.errorMessage =  null;
@@ -22,12 +20,9 @@ angular.module('app.controllers', [])
 
     $scope.findStation = function() {
       $scope.clearData();
-      $scope.loading = true;
 
       if($scope.geolocation) {
         stationFinder.findBestStation($scope.geolocation).then(function(result) {
-          $scope.toggleLoading();
-
           if('error' in result) {
             $scope.errorMessage = result.error;
           }
@@ -40,7 +35,6 @@ angular.module('app.controllers', [])
         // if there's no stored geolocation, attempt to resolve one based on what user entered in the $scope.location field
         geocoder.geocode($scope.location).then(function(result) {
           if('error' in result) {
-            $scope.toggleLoading();
             $scope.errorMessage = "We couldn't find any member stations in your area.";
           }
           else {

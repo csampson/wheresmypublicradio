@@ -10,29 +10,36 @@ describe('app services', function() {
       $httpBackend  = injector.get('$httpBackend');
     }));
 
-    it('should be able to fetch the best station', function() {
-      $httpBackend.whenGET(/^\/best_station*/).respond({ label: '89.9 FM - WWNO' });
 
-      var geolocation = { latitude: 90, longitude: 90 },
-          fetch       = stationFinder.findBestStation(geolocation);
+    describe('loading state', function() {
+      it('should reflect as loading while searching', function() {
+        var geolocation = {};
 
-      $httpBackend.flush();
+        stationFinder.findBestStation(geolocation);
 
-      fetch.then(function(result) {
-        expect(result).toEqual({ latitude: 90, longitude: 90 });
+        expect(stationFinder.loading).toBe(true);
       });
-    });
 
-    it('should handle fetch errors', function() {
-      $httpBackend.whenGET(/^\/best_station*/).respond('');
+      it('should reflect as NOT loading when a best station response is returned', function() {
+        $httpBackend.whenGET(/^\/best_station*/).respond({});
+        var geolocation = {};
 
-      var geolocation = { latitude: 90, longitude: 90 },
-          fetch       = stationFinder.findBestStation(geolocation);
+        stationFinder.findBestStation(geolocation).then(function(result) {
+          expect(stationFinder.loading).toBe(false);
+        });
 
-      $httpBackend.flush();
+        $httpBackend.flush();
+      });
 
-      fetch.then(function(result) {
-        expect(result.error).toBeDefined();
+      it('should reflect as NOT loading when an error is returned', function() {
+        $httpBackend.whenGET(/^\/best_station*/).respond(undefined);
+        var geolocation = {};
+
+        stationFinder.findBestStation(geolocation).then(function(result) {
+          expect(stationFinder.loading).toBe(false);
+        });
+
+        $httpBackend.flush();
       });
     });
   });

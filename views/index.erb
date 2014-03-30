@@ -40,9 +40,9 @@
     </button>
   </form>
 
-  <section class='best-station' data-ng-if='loading || bestStation || errorMessage'>
+  <section class='best-station' data-ng-if='stationFinder.loading || bestStation || errorMessage'>
     <p data-ng-if='errorMessage' class='best-station-error'>{{errorMessage}}</p>
-    <span class='best-station-loading' data-ng-show='loading'><i class='best-station-loading-icon fa-sun-o fa'></i></span>
+    <span class='best-station-loading' data-ng-show='stationFinder.loading'><i class='best-station-loading-icon fa-sun-o fa'></i></span>
 
     <p class='best-station-summary' data-ng-if='bestStation'>
       Tune in to
