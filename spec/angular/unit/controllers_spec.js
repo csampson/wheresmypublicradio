@@ -18,11 +18,11 @@ describe('app controllers', function() {
     it('should be able to fetch and store the best station', function() {
       $httpBackend.whenGET(/^\/best_station*/).respond({ label: '89.9 FM - WWNO' });
 
-      scope.geolocation = { latitude: 90, longitude: 90 };
+      scope.geolocation = {};
       scope.findStation();
       $httpBackend.flush();
 
-      expect(scope.bestStation).toEqual({label: '89.9 FM - WWNO'});
+      expect(scope.stationFinder.bestStation).toEqual({label: '89.9 FM - WWNO'});
     });
   });
 });

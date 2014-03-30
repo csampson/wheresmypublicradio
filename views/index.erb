@@ -40,19 +40,19 @@
     </button>
   </form>
 
-  <section class='best-station' data-ng-if='stationFinder.loading || bestStation || errorMessage'>
+  <section class='best-station' data-ng-if='stationFinder.loading || stationFinder.bestStation || errorMessage'>
     <p data-ng-if='errorMessage' class='best-station-error'>{{errorMessage}}</p>
     <span class='best-station-loading' data-ng-show='stationFinder.loading'><i class='best-station-loading-icon fa-sun-o fa'></i></span>
 
-    <p class='best-station-summary' data-ng-if='bestStation'>
+    <p class='best-station-summary' data-ng-if='stationFinder.bestStation'>
       Tune in to
-      <span class='best-station-label'>{{bestStation.label}}</span>
+      <span class='best-station-label'>{{stationFinder.bestStation.label}}</span>
     </p>
 
-    <menu class='best-station-controls' data-ng-if='bestStation'>
-      <a data-ng-if='bestStation.home_page' data-ng-href='{{bestStation.home_page}}' class='best-station-visit'><i class='fa-globe fa'></i> Visit</a>
-      <a data-ng-if='bestStation.pledge_page' data-ng-href='{{bestStation.pledge_page}}' class='best-station-pledge'><i class='fa-heart fa'></i> Pledge</a>
-      <button data-ng-if='bestStation.stream_url' class='best-station-listen' type='button' data-stream-url='bestStation.stream_url' data-radio-streamer></button>
+    <menu class='best-station-controls' data-ng-if='stationFinder.bestStation'>
+      <a data-ng-if='stationFinder.bestStation.home_page' data-ng-href='{{stationFinder.bestStation.home_page}}' class='best-station-visit'><i class='fa-globe fa'></i> Visit</a>
+      <a data-ng-if='stationFinder.bestStation.pledge_page' data-ng-href='{{stationFinder.bestStation.pledge_page}}' class='best-station-pledge'><i class='fa-heart fa'></i> Pledge</a>
+      <button data-ng-if='stationFinder.bestStation.stream_url' class='best-station-listen' type='button' data-stream-url='stationFinder.bestStation.stream_url' data-radio-streamer></button>
     </menu>
   </section>
 

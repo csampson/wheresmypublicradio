@@ -39,6 +39,7 @@ angular.module('app.services', [])
   }])
   .factory('stationFinder', ['$q', '$http', function($q, $http) {
     var stationFinder = {
+      bestStation: null,
       loading: false,
       toggleLoading: function(enable) {
         this.loading = enable;
@@ -56,7 +57,8 @@ angular.module('app.services', [])
             deferred.resolve({ error: "We couldn't find any member stations in your area." });
           }
           else {
-            deferred.resolve(response);
+            stationFinder.bestStation = response;
+            deferred.resolve();
           }
         });
 

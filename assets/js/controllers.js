@@ -3,7 +3,7 @@ angular.module('app.controllers', [])
     $scope.stationFinder = stationFinder;
 
     $scope.clearData = function() {
-      $scope.bestStation = $scope.errorMessage =  null;
+      $scope.stationFinder.bestStation = $scope.errorMessage =  null;
     };
 
     $scope.getGeolocation = function() {
@@ -23,11 +23,8 @@ angular.module('app.controllers', [])
 
       if($scope.geolocation) {
         stationFinder.findBestStation($scope.geolocation).then(function(result) {
-          if('error' in result) {
+          if(result && 'error' in result) {
             $scope.errorMessage = result.error;
-          }
-          else {
-            $scope.bestStation = result;
           }
         });
       }
