@@ -42,5 +42,19 @@ describe('app services', function() {
         $httpBackend.flush();
       });
     });
+
+    describe('error messages', function() {
+      it('should set an error message if the best station cannot be found', function() {
+        $httpBackend.whenGET(/^\/best_station*/).respond(undefined);
+        var geolocation = {};
+
+        stationFinder.findBestStation(geolocation).then(function(result) {
+          expect('error' in result).toBe(true);
+          expect(result.error).toBe("We couldn't find any member stations in your area.");
+        });
+
+        $httpBackend.flush();
+      });
+    });
   });
 });

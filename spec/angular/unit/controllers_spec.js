@@ -24,15 +24,5 @@ describe('app controllers', function() {
 
       expect(scope.bestStation).toEqual({label: '89.9 FM - WWNO'});
     });
-
-    it('should set an error message if the best station cannot be found', function() {
-      $httpBackend.whenGET(/^\/best_station*/).respond(undefined);
-
-      scope.geolocation = { latitude: 90, longitude: 90 };
-      scope.findStation();
-      $httpBackend.flush();
-
-      expect(scope.errorMessage).toBe("We couldn't find any member stations in your area.");
-    });
   });
 });
