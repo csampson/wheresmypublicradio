@@ -10,29 +10,50 @@ describe('app services', function() {
       $httpBackend  = injector.get('$httpBackend');
     }));
 
-    it('should be able to fetch the best station', function() {
-      $httpBackend.whenGET(/^\/best_station*/).respond({ label: '89.9 FM - WWNO' });
 
-      var geolocation = { latitude: 90, longitude: 90 },
-          fetch       = stationFinder.findBestStation(geolocation);
+    describe('loading state', function() {
+      it('should reflect as loading while searching', function() {
+        var geolocation = {};
 
-      $httpBackend.flush();
+        stationFinder.findBestStation(geolocation);
 
-      fetch.then(function(result) {
-        expect(result).toEqual({ latitude: 90, longitude: 90 });
+        expect(stationFinder.loading).toBe(true);
+      });
+
+      it('should reflect as NOT loading when a best station response is returned', function() {
+        $httpBackend.whenGET(/^\/best_station*/).respond({});
+        var geolocation = {};
+
+        stationFinder.findBestStation(geolocation).then(function(result) {
+          expect(stationFinder.loading).toBe(false);
+        });
+
+        $httpBackend.flush();
+      });
+
+      it('should reflect as NOT loading when an error is returned', function() {
+        $httpBackend.whenGET(/^\/best_station*/).respond(undefined);
+        var geolocation = {};
+
+        stationFinder.findBestStation(geolocation).then(function(result) {
+          expect(stationFinder.loading).toBe(false);
+        });
+
+        $httpBackend.flush();
       });
     });
 
-    it('should handle fetch errors', function() {
-      $httpBackend.whenGET(/^\/best_station*/).respond('');
+    describe('error messages', function() {
+      it('should set an error message if the best station cannot be found', function() {
+        $httpBackend.whenGET(/^\/best_station*/).respond(undefined);
+        var geolocation = {};
 
-      var geolocation = { latitude: 90, longitude: 90 },
-          fetch       = stationFinder.findBestStation(geolocation);
+        stationFinder.findBestStation(geolocation).then(function(result) {
+          expect('error' in result).toBe(true);
+          expect(result.error).toBe("We couldn't find any member stations in your area.");
+        });
 
-      $httpBackend.flush();
-
-      fetch.then(function(result) {
-        expect(result.error).toBeDefined();
+        $httpBackend.flush();
       });
     });
   });

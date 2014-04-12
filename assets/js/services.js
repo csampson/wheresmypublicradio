@@ -37,19 +37,34 @@ angular.module('app.services', [])
       return deferred.promise;
     };
   }])
-  .service('stationFinder', ['$q', '$http', function($q, $http) {
-    this.findBestStation = function(geolocation) {
-      var deferred = $q.defer();
+  .factory('stationFinder', ['$q', '$http', function($q, $http) {
+    var stationFinder = {
+      bestStation: null,
+      loading: false,
+      toggleLoading: function(enable) {
+        this.loading = enable;
+        return this;
+      },
+      findBestStation: function(geolocation) {
+        var deferred = $q.defer();
 
-      $http.get('/best_station', {params: geolocation}).success(function(response) {
-        if(!response) {
-          deferred.resolve({ error: "We couldn't find any member stations in your area." });
-        }
-        else {
-          deferred.resolve(response);
-        }
-      });
+        stationFinder.toggleLoading(true);
 
-      return deferred.promise;
+        $http.get('/best_station', {params: geolocation}).success(function(response) {
+          stationFinder.toggleLoading(false);
+
+          if(!response) {
+            deferred.resolve({ error: "We couldn't find any member stations in your area." });
+          }
+          else {
+            stationFinder.bestStation = response;
+            deferred.resolve();
+          }
+        });
+
+        return deferred.promise;
+      }
     };
+
+    return stationFinder;
   }]);

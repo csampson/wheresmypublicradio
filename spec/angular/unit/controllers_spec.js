@@ -18,50 +18,11 @@ describe('app controllers', function() {
     it('should be able to fetch and store the best station', function() {
       $httpBackend.whenGET(/^\/best_station*/).respond({ label: '89.9 FM - WWNO' });
 
-      scope.geolocation = { latitude: 90, longitude: 90 };
+      scope.geolocation = {};
       scope.findStation();
       $httpBackend.flush();
 
-      expect(scope.bestStation).toEqual({label: '89.9 FM - WWNO'});
-    });
-
-    it('should set an error message if the best station cannot be found', function() {
-      $httpBackend.whenGET(/^\/best_station*/).respond(undefined);
-
-      scope.geolocation = { latitude: 90, longitude: 90 };
-      scope.findStation();
-      $httpBackend.flush();
-
-      expect(scope.errorMessage).toBe("We couldn't find any member stations in your area.");
-    });
-
-    describe('loading state', function() {
-      it('should reflect as loading when searching for stations by geolocation', function() {
-        scope.geolocation = { latitude: 90, longitude: 90 };
-        scope.findStation();
-
-        expect(scope.loading).toBe(true);
-      });
-
-      it('should reflect as NOT loading when a best station response is returned', function() {
-        $httpBackend.whenGET(/^\/best_station*/).respond({});
-
-        scope.geolocation = { latitude: 90, longitude: 90 };
-        scope.findStation();
-        $httpBackend.flush();
-
-        expect(scope.loading).toBe(false);
-      });
-
-      it('should reflect as NOT loading when an error is returned', function() {
-        $httpBackend.whenGET(/^\/best_station*/).respond({});
-
-        scope.geolocation = {};
-        scope.findStation();
-        $httpBackend.flush();
-
-        expect(scope.loading).toBe(false);
-      });
+      expect(scope.stationFinder.bestStation).toEqual({label: '89.9 FM - WWNO'});
     });
   });
 });
