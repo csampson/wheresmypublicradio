@@ -2,17 +2,12 @@ describe('app controllers', function() {
   beforeEach(module('app'));
 
   describe('StationFinderCtrl', function() {
-    var StationFinderCtrl, injector, scope, $rootScope, $controller, $q, $httpBackend, geolocation;
+    var StationFinderCtrl, $httpBackend, scope;
 
-    beforeEach(inject(function($injector) {
-      injector     = $injector;
-      scope        = injector.get('$rootScope');
-      $controller  = injector.get('$controller');
-      $q           = injector.get('$q');
-      $httpBackend = injector.get('$httpBackend');
-      geolocation  = injector.get('geolocation');
-
-      $controller('StationFinderCtrl', { $scope : scope });
+    beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
+      $httpBackend      = _$httpBackend_;
+      scope             = $rootScope.$new();
+      StationFinderCtrl = $controller('StationFinderCtrl', { $scope: scope });
     }));
 
     it('should be able to fetch and store the best station', function() {
@@ -22,7 +17,7 @@ describe('app controllers', function() {
       scope.findStation();
       $httpBackend.flush();
 
-      expect(scope.stationFinder.bestStation).toEqual({label: '89.9 FM - WWNO'});
+      expect(scope.stationFinder.bestStation).toEqual({ label: '89.9 FM - WWNO' });
     });
   });
 });
