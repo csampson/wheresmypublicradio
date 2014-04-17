@@ -2,12 +2,11 @@ describe('app services', function() {
   beforeEach(module('app.services'));
 
   describe('stationFinder', function() {
-    var stationFinder, injector, $httpBackend;
+    var $httpBackend, stationFinder;
 
-    beforeEach(inject(function($injector) {
-      injector      = $injector;
-      stationFinder = injector.get('stationFinder');
-      $httpBackend  = injector.get('$httpBackend');
+    beforeEach(inject(function(_$httpBackend_, _stationFinder_) {
+      $httpBackend  = _$httpBackend_;
+      stationFinder = _stationFinder_;
     }));
 
 
