@@ -25,7 +25,7 @@ Register for an NPR api key by signing up for an account at http://www.npr.org/t
 
 Running the application:
 ```
-rackup
+bundle exec rackup
 ```
 
 ## Testing
