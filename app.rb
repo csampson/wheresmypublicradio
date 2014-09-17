@@ -50,7 +50,6 @@ class App < Sinatra::Base
 
     endpoint_uri = URI(playlist_url)
     endpoint_http = Net::HTTP.start(endpoint_uri.host, endpoint_uri.port)
-    endpoint_response = nil
 
     # Verify source supports appending /; for forced streaming
     begin

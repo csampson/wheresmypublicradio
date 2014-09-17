@@ -8,7 +8,7 @@ class StationParser
   end
 
   def get_strongest_station
-    parse_station @stations.max_by{|s|s['signal'][0]['strength'].to_i }
+    parse_station @stations.max_by{ |s|s['signal'][0]['strength'].to_i }
   end
 
   private
