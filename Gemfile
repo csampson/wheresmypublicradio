@@ -9,9 +9,9 @@ gem 'sinatra-assetpack'
 gem 'yui-compressor'
 gem 'uglifier'
 gem 'sass'
-gem 'bourbon', '~> 3.2.0.beta.2'
+gem 'bourbon'
 
-group :development do
+group :development, :test do
   gem 'sinatra-reloader'
   gem 'pry'
   gem 'pry-nav'

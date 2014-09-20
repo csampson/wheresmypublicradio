@@ -1,4 +1,5 @@
-require_relative '../../../lib/playlist'
+require_relative "./spec_helper"
+require_relative '../../lib/playlist'
 
 describe Playlist do
   context 'given a m3u file' do
@@ -10,21 +11,21 @@ describe Playlist do
     end
 
     it 'can extract a stream url from a playlist with a plain url' do
-      file_contents = File.read(File.expand_path('../playlist_plain_url.m3u', __FILE__))
+      file_contents = load_fixture('playlist_plain_url.m3u')
       playlist = Playlist.new(:body => file_contents, :filetype => :m3u)
 
       expect(playlist.get_stream_url).to eq('http://example.com/stream')
     end
 
     it 'can extract a stream url from a playlist with a port-specified resource' do
-      file_contents = File.read(File.expand_path('../playlist_with_port.m3u', __FILE__))
+      file_contents = load_fixture('playlist_with_port.m3u')
       playlist = Playlist.new(:body => file_contents, :filetype => :m3u)
 
       expect(playlist.get_stream_url).to eq('http://example.com:7200/;')
     end
 
     it 'can extract a stream url from a playlist with a direct file reference' do
-      file_contents = File.read(File.expand_path('../playlist_direct.m3u', __FILE__))
+      file_contents = load_fixture('playlist_direct.m3u')
       playlist = Playlist.new(:body => file_contents, :filetype => :m3u)
 
       expect(playlist.get_stream_url).to eq('http://example.com/stream.mp3')
@@ -40,21 +41,21 @@ describe Playlist do
     end
 
     it 'can extract a stream url from a playlist with a plain url' do
-      file_contents = File.read(File.expand_path('../playlist_plain_url.pls', __FILE__))
+      file_contents = load_fixture('playlist_plain_url.pls')
       playlist = Playlist.new(:body => file_contents, :filetype => :pls)
 
       expect(playlist.get_stream_url).to eq('http://example.com/stream')
     end
 
     it 'can extract a stream url from a playlist with a port-specified resource' do
-      file_contents = File.read(File.expand_path('../playlist_with_port.pls', __FILE__))
+      file_contents = load_fixture('playlist_with_port.pls')
       playlist = Playlist.new(:body => file_contents, :filetype => :pls)
 
       expect(playlist.get_stream_url).to eq('http://example.com:7200/;')
     end
 
     it 'can extract a stream url from a playlist with a direct file reference' do
-      file_contents = File.read(File.expand_path('../playlist_direct.pls', __FILE__))
+      file_contents = load_fixture('playlist_direct.pls')
       playlist = Playlist.new(:body => file_contents, :filetype => :pls)
 
       expect(playlist.get_stream_url).to eq('http://example.com/stream.mp3')
