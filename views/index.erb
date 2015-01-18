@@ -1,61 +1,13 @@
 <!DOCTYPE html>
-<html lang='en-US' data-ng-app='app'>
+<html lang='en-US'>
 <head>
   <meta charset='utf-8' />
-  <meta name='description' content='Discover awesome NPR member stations.' />
+  <meta name='description' content='Stream awesome NPR member stations.' />
   <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1' />
-  <title>Where's My Public Radio?</title>
+  <title>Discover Public Radio</title>
   <%= css :app %>
-  <link href='//fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css' />
-  <link href='//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css' rel='stylesheet' type='text/css' />
-  <script src='//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js'></script>
-  <script src='//code.jquery.com/jquery-1.10.1.min.js'></script>
-  <script src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js'></script>
-  <script src='//maps.googleapis.com/maps/api/js?libraries=places&amp;sensor=false'></script>
-  <script src='//cdnjs.cloudflare.com/ajax/libs/jplayer/2.5.4/jquery.jplayer.min.js'></script>
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css' />
 </head>
-<body data-ng-controller='StationFinderCtrl' ng-cloak>
-  <header class='app-hero'>
-    <h1 class='app-hero-header'>Where's My Public Radio?</h1>
-    <p class='app-hero-spiel'>Discover awesome NPR member stations.</p>
-  </header>
-
-  <form name='searchForm'>
-    <span class='location-field addon-field'>
-      <span class='addon-field-input'>
-        <label class='placeheld-field' data-placeheld-field>
-          <input data-location-autocomplete data-location='geolocation' data-ng-model='location' class='placeheld-field-input' type='text' placeholder='' autocomplete='off' />
-          <span class='placeheld-field-placeholder' data-ng-hide='location === "My location"'>Enter a location</span>
-        </label>
-      </span>
-
-      <span class='addon-field-append'>
-        <button data-ng-click='getGeolocation()' type='button'><i class='fa-location-arrow fa'></i><span class='hidden-content'>Use my geolocation</span></button>
-      </span>
-    </span>
-
-    <button data-ng-click='findStation()' class='submit-form' type='submit'>
-      <i class='fa-search fa'></i>
-      Find a station
-    </button>
-  </form>
-
-  <section class='best-station' data-ng-if='stationFinder.loading || stationFinder.bestStation || errorMessage'>
-    <p data-ng-if='errorMessage' class='best-station-error'>{{errorMessage}}</p>
-    <span class='best-station-loading' data-ng-show='stationFinder.loading'><i class='best-station-loading-icon fa-sun-o fa'></i></span>
-
-    <p class='best-station-summary' data-ng-if='stationFinder.bestStation'>
-      Tune in to
-      <span class='best-station-label'>{{stationFinder.bestStation.label}}</span>
-    </p>
-
-    <menu class='best-station-controls' data-ng-if='stationFinder.bestStation'>
-      <a data-ng-if='stationFinder.bestStation.home_page' data-ng-href='{{stationFinder.bestStation.home_page}}' class='best-station-visit'><i class='fa-globe fa'></i> Visit</a>
-      <a data-ng-if='stationFinder.bestStation.pledge_page' data-ng-href='{{stationFinder.bestStation.pledge_page}}' class='best-station-pledge'><i class='fa-heart fa'></i> Pledge</a>
-      <button data-ng-if='stationFinder.bestStation.stream_url' class='best-station-listen' type='button' data-stream-url='stationFinder.bestStation.stream_url' data-radio-streamer></button>
-    </menu>
-  </section>
-
-  <%= js :app %>
+<body>
 </body>
 </html>
