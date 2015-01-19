@@ -1,12 +1,3 @@
-require 'open-uri'
-require 'net/http'
-require 'json'
-require 'dotenv'
-require 'sinatra'
-require 'sinatra/assetpack'
-require 'yui/compressor'
-require 'sass'
-
 if development?
   require 'sinatra/reloader'
   require 'pry'
