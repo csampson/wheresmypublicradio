@@ -1,15 +1,15 @@
-require "open-uri"
+require "net/http"
 require "xmlsimple"
 
 module StationFinder
-  def self.find_strongest(coordinates)
+  def self.find_strongest_station(coordinates)
     api_params = ::URI.encode_www_form({
       :apiKey => ENV["API_KEY"], # TODO: remove ENV dependency
       :lon => coordinates[:longitude],
       :lat => coordinates[:latitude]
     })
 
-    api_response      = open("http://api.npr.org/stations?#{api_params}").read # TODO: abstract API requests out
+    api_response      = Net::HTTP.get(URI("https://api.npr.org/stations?#{api_params}")) # TODO: abstract API requests out
     stations          = XmlSimple.xml_in(api_response)["station"].reject(&:empty?)
     strongest_station = stations.max_by{ |s|s["signal"][0]["strength"].to_i }
 
