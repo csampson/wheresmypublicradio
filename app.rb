@@ -1,10 +1,3 @@
-require "json"
-require "dotenv"
-require "sinatra"
-require "sinatra/assetpack"
-require "yui/compressor"
-require "sass"
-
 class App < Sinatra::Base
   register Sinatra::AssetPack
 

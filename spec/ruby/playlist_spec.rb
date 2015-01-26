@@ -33,7 +33,7 @@ describe Playlist do
         expect(stream_url.to_s).to eq("http://example.com/stream")
       end
 
-      it "can extract a stream url from a playlist with a port-specified resource" do
+      it "should extract a stream url from a playlist with a port-specified resource" do
         playlist_body = load_fixture("playlist_with_port.m3u")
 
         stub_request(:get, "http://example.com/playlist.m3u").to_return(:body => playlist_body)
@@ -44,7 +44,7 @@ describe Playlist do
         expect(stream_url.to_s).to eq("http://example.com:7200/;")
       end
 
-      it "can extract a stream url from a playlist with a direct file reference" do
+      it "should extract a stream url from a playlist with a direct file reference" do
         playlist_body = load_fixture("playlist_direct.m3u")
 
         stub_request(:get, "http://example.com/playlist.m3u").to_return(:body => playlist_body)
@@ -88,7 +88,7 @@ describe Playlist do
         expect(stream_url.to_s).to eq("http://example.com/stream")
       end
 
-      it "can extract a stream url from a playlist with a port-specified resource" do
+      it "should extract a stream url from a playlist with a port-specified resource" do
         playlist_body = load_fixture("playlist_with_port.pls")
 
         stub_request(:get, "http://example.com/playlist.pls").to_return(:body => playlist_body)
@@ -99,7 +99,7 @@ describe Playlist do
         expect(stream_url.to_s).to eq("http://example.com:7200/;")
       end
 
-      it "can extract a stream url from a playlist with a direct file reference" do
+      it "should extract a stream url from a playlist with a direct file reference" do
         playlist_body = load_fixture("playlist_direct.pls")
 
         stub_request(:get, "http://example.com/playlist.pls").to_return(:body => playlist_body)
