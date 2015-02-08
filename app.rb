@@ -6,17 +6,8 @@ class App < Sinatra::Base
   end
 
   assets {
-    serve "/css", {:from => "assets/css"}
-    serve "/js",  {:from => "assets/js"}
     #serve "/images", {:from => "assets/images"}
-
-    css :app, ["css/app.css"]
-
-    css_compression :yui
-    #js_compression  :uglify
   }
-
-  set :scss, { :load_paths => [ "#{App.root}/assets/css" ] }
 
   get "/" do
     erb :index

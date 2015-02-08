@@ -1,5 +1,14 @@
+# deployment
 Capfile
+
+# environment config
 .env
+
+# assembly and temporary files
 .sass-cache
+public
 tmp
+
+# packages
+node_modules
 

@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang='en-US'>
+<html lang='en-US' ng-app='app'>
 <head>
   <meta charset='utf-8' />
-  <meta name='description' content='Stream awesome NPR member stations.' />
-  <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1' />
+  <meta name='description' content='Tune in to awesome NPR member stations.' />
+  <meta name='viewport' content='width=device-width, initial-scale=1' />
   <title>Discover Public Radio</title>
-  <%= css :app %>
-  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet' type='text/css' />
+  <link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css' />
 </head>
 <body>
+  <div ng-controller='SearchCtrl as search'></div>
+  <script src='/js/app.js'></script>
 </body>
 </html>
