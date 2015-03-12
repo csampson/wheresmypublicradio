@@ -1,9 +1,6 @@
 require "sinatra"
-require "sinatra/assetpack"
 require "dotenv"
 require "json"
-require "sass"
-require "yui/compressor"
 
 if development?
   require "sinatra/reloader"

@@ -1,13 +1,7 @@
 class App < Sinatra::Base
-  register Sinatra::AssetPack
-
   configure :development do
     register Sinatra::Reloader
   end
-
-  assets {
-    #serve "/images", {:from => "assets/images"}
-  }
 
   get "/" do
     erb :index
