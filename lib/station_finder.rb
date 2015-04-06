@@ -1,7 +1,7 @@
 require "net/http"
 require "xmlsimple"
 
-module StationFinder
+class StationFinder
   def self.find_strongest_station(coordinates)
     api_params = ::URI.encode_www_form({
       :apiKey => ENV["API_KEY"], # TODO: remove ENV dependency
