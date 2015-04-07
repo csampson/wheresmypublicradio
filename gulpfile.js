@@ -55,7 +55,9 @@ gulp.task('clean-css', function() {
 
 gulp.task('bundle-css', ['clean-css'], function () {
   return gulp.src('./assets/css/app.styl')
+    .pipe(sourcemaps.init())
     .pipe(stylus({ use: [nib()] }))
+    .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./public/css/'));
 });
 
