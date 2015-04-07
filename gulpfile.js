@@ -1,11 +1,14 @@
 'use strict';
 
-var source = require('vinyl-source-stream');
-
 var del = require('del');
 
-var gulp     = require('gulp'),
-    gulpUtil = require('gulp-util');
+var source = require('vinyl-source-stream'),
+    buffer = require('vinyl-buffer');
+
+var gulp       = require('gulp'),
+    gulpUtil   = require('gulp-util'),
+    uglify     = require('gulp-uglify'),
+    sourcemaps = require('gulp-sourcemaps');
     
 var browserify = require('browserify'),
     watchify   = require('watchify');
@@ -17,7 +20,10 @@ var config = {
   debug: gulpUtil.env.type !== 'production'
 };
 
-var scriptBundler = browserify('./assets/js/app.js', config.debug);
+var scriptBundler = browserify({
+  entries: './assets/js/app.js',
+  debug: config.debug
+});
 
 function bundleScripts(options) {
   var bundler = options.watch ? watchify(scriptBundler) : scriptBundler,
@@ -36,6 +42,10 @@ function bundleScripts(options) {
 
   return stream
     .pipe(source('app.js'))
+    .pipe(buffer())
+    .pipe(sourcemaps.init({ loadMaps: true }))
+    .pipe(uglify())
+    .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./public/js'));
 }
 
@@ -44,11 +54,9 @@ gulp.task('clean-css', function() {
 });
 
 gulp.task('bundle-css', ['clean-css'], function () {
-  gulp.task('compile-css', function() {
-    return gulp.src('./assets/css/app.styl')
-      .pipe(stylus({ use: [nib()] }))
-      .pipe(gulp.dest('./public/css/'));
-  });
+  return gulp.src('./assets/css/app.styl')
+    .pipe(stylus({ use: [nib()] }))
+    .pipe(gulp.dest('./public/css/'));
 });
 
 gulp.task('watch-css', ['bundle-css'], function() {
