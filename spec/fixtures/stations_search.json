@@ -1,0 +1,274 @@
+[
+    {
+        "guid": "4fcf70121923405e948e941cccdb89e4",
+        "org_id": "711",
+        "name": "WWNO - New Orleans Public Radio",
+        "title": "WWNO-FM",
+        "abbreviation": "WWNO-FM",
+        "call": "WWNO",
+        "frequency": "89.9",
+        "band": "FM",
+        "tagline": "Your Source for NPR News, Music and Culture",
+        "address": [
+            "University of New Orleans",
+            "New Orleans",
+            "LA",
+            "70148"
+        ],
+        "market_city": "New Orleans",
+        "market_state": "LA",
+        "format": "Public Radio",
+        "music_only": 0,
+        "status": "1",
+        "status_name": "Member",
+        "email": "@uno.edu",
+        "area_code": null,
+        "phone": "5042807000",
+        "phone_extension": null,
+        "fax": "5042806061",
+        "network": [],
+        "urls": [
+            {
+                "type_id": "1",
+                "type_name": "Organization Home Page",
+                "title": "WWNO - New Orleans Public Radio",
+                "href": "http://www.wwno.org"
+            },
+            {
+                "type_id": "2",
+                "type_name": "Program Schedule",
+                "title": "Program Guide",
+                "href": "http://wwno.org/schedule/week"
+            },
+            {
+                "type_id": "4",
+                "type_name": "Pledge Page",
+                "title": "Support WWNO",
+                "href": "http://wwno.org/donate"
+            },
+            {
+                "type_id": "7",
+                "type_name": "Audio Stream Landing Page",
+                "title": "WWNO: New Orleans Public Radio",
+                "href": "http://www.wwno.org/listen"
+            },
+            {
+                "type_id": "7",
+                "type_name": "Audio Stream Landing Page",
+                "title": "WWNO-HD2: Classical Music",
+                "href": "http://www.wwno.org/listen"
+            },
+            {
+                "type_id": "7",
+                "type_name": "Audio Stream Landing Page",
+                "title": "WWNO-HD3: Jazz Music From New Orleans",
+                "href": "http://www.wwno.org/listen"
+            },
+            {
+                "type_id": "8",
+                "type_name": "RSS Feed",
+                "title": "Where Y'Eat",
+                "href": "http://wwno.org/feeds/6095/rss.xml"
+            },
+            {
+                "type_id": "8",
+                "type_name": "RSS Feed",
+                "title": "WWNO - Latest New Orleans News",
+                "href": "http://wwno.org/feeds/6094/rss.xml"
+            },
+            {
+                "type_id": "8",
+                "type_name": "RSS Feed",
+                "title": "Louisiana Eats!",
+                "href": "http://wwno.org/feeds/3524/rss.xml"
+            },
+            {
+                "type_id": "8",
+                "type_name": "RSS Feed",
+                "title": "The Reading Life",
+                "href": "http://wwno.org/feeds/3557/rss.xml"
+            },
+            {
+                "type_id": "8",
+                "type_name": "RSS Feed",
+                "title": "All Things New Orleans",
+                "href": "http://wwno.org/feeds/3573/rss.xml"
+            },
+            {
+                "type_id": "8",
+                "type_name": "RSS Feed",
+                "title": "Inside The Arts",
+                "href": "http://www.wwno.org/feeds/6099/rss.xml"
+            },
+            {
+                "type_id": "8",
+                "type_name": "RSS Feed",
+                "title": "The Sound of Books",
+                "href": "http://www.wwno.org/feeds/6100/rss.xml"
+            },
+            {
+                "type_id": "8",
+                "type_name": "RSS Feed",
+                "title": "The Farmers Market Minute",
+                "href": "http://www.wwno.org/feeds/6091/rss.xml"
+            },
+            {
+                "type_id": "8",
+                "type_name": "RSS Feed",
+                "title": "Community Impact",
+                "href": "http://www.wwno.org/feeds/6101/rss.xml"
+            },
+            {
+                "type_id": "8",
+                "type_name": "RSS Feed",
+                "title": "The Complete Collection",
+                "href": "http://wwno.org/rss.xml"
+            },
+            {
+                "type_id": "8",
+                "type_name": "RSS Feed",
+                "title": "The Listening Room",
+                "href": "http://wwno.org/feeds/3581/rss.xml"
+            },
+            {
+                "type_id": "9",
+                "type_name": "Podcast",
+                "title": "WWNO: Latest News",
+                "href": "http://wwno.org/podcasts/6094/rss.xml"
+            },
+            {
+                "type_id": "9",
+                "type_name": "Podcast",
+                "title": "All  Things New Orleans",
+                "href": "http://wwno.org/podcasts/3573/rss.xml"
+            },
+            {
+                "type_id": "9",
+                "type_name": "Podcast",
+                "title": "Where Y'Eat",
+                "href": "http://wwno.org/podcasts/6095/rss.xml"
+            },
+            {
+                "type_id": "9",
+                "type_name": "Podcast",
+                "title": "Louisiana Eats!",
+                "href": "http://wwno.org/podcasts/3524/rss.xml"
+            },
+            {
+                "type_id": "9",
+                "type_name": "Podcast",
+                "title": "The Reading Life",
+                "href": "http://wwno.org/podcasts/3557/rss.xml"
+            },
+            {
+                "type_id": "9",
+                "type_name": "Podcast",
+                "title": "Inside The Arts",
+                "href": "http://wwno.org/podcasts/6099/rss.xml"
+            },
+            {
+                "type_id": "9",
+                "type_name": "Podcast",
+                "title": "Community Impact",
+                "href": "http://wwno.org/podcasts/6101/rss.xml"
+            },
+            {
+                "type_id": "9",
+                "type_name": "Podcast",
+                "title": "Notes From New Orleans",
+                "href": "http://wwno.org/feeds/7089/rss.xml"
+            },
+            {
+                "type_id": "9",
+                "type_name": "Podcast",
+                "title": "Notes From New Orleans",
+                "href": "itpc://wwno.org/podcasts/7089/rss.xml"
+            },
+            {
+                "type_id": "9",
+                "type_name": "Podcast",
+                "title": "Out to Lunch",
+                "href": "http://wwno.org/feeds/14246/rss.xml"
+            },
+            {
+                "type_id": "9",
+                "type_name": "Podcast",
+                "title": "WWNO's Le Show",
+                "href": "http://feeds.podtrac.com/4S-hYvoS7-rh"
+            },
+            {
+                "type_id": "9",
+                "type_name": "Podcast",
+                "title": "TriPod: New Orleans at 300",
+                "href": "http://wwno.org/podcasts/88432/rss.xml"
+            },
+            {
+                "type_id": "9",
+                "type_name": "Podcast",
+                "title": "Katrina: The Debris",
+                "href": "http://wwno.org/podcasts/81436/rss.xml"
+            },
+            {
+                "type_id": "10",
+                "type_name": "Audio MP3 Stream",
+                "title": "WWNO: News For New Orleans",
+                "href": "http://www.publicbroadcasting.net/wwno/ppr/wwno_128.m3u",
+                "stream_guid": "4fcf71440959424a8eadf4d79423fdef",
+                "primary_stream": 1
+            },
+            {
+                "type_id": "10",
+                "type_name": "Audio MP3 Stream",
+                "title": "WWNO-HD2: Classical Music",
+                "href": "http://www.publicbroadcasting.net/wwno/ppr/wwno2_128.m3u",
+                "stream_guid": "4fcf71440bf641b0ad0b93e189fd83fe",
+                "primary_stream": 0
+            },
+            {
+                "type_id": "10",
+                "type_name": "Audio MP3 Stream",
+                "title": "WWNO-HD3: Jazz Music From New Orleans",
+                "href": "http://www.publicbroadcasting.net/wwno/ppr/wwno3_128.m3u",
+                "stream_guid": "4fcf71440d6646df86d04045d75538e7",
+                "primary_stream": 0
+            },
+            {
+                "type_id": "13",
+                "type_name": "Audio AAC Stream",
+                "title": "WWNO: News For New Orleans",
+                "href": "http://www.publicbroadcasting.net/wwno/ppr/wwno.m3u",
+                "stream_guid": "4fcf71440959424a8eadf4d79423fdef",
+                "primary_stream": 1
+            },
+            {
+                "type_id": "13",
+                "type_name": "Audio AAC Stream",
+                "title": "WWNO-HD2: Classical Music",
+                "href": "http://www.publicbroadcasting.net/wwno/ppr/wwno2.m3u",
+                "stream_guid": "4fcf71440bf641b0ad0b93e189fd83fe",
+                "primary_stream": 0
+            },
+            {
+                "type_id": "16",
+                "type_name": "Facebook Url",
+                "title": "Facebook",
+                "href": "https://www.facebook.com/899wwno"
+            },
+            {
+                "type_id": "17",
+                "type_name": "Twitter Feed",
+                "title": "Twitter",
+                "href": "http://twitter.com/wwno"
+            },
+            {
+                "type_id": "24",
+                "type_name": "Station ID MP3 Audio",
+                "title": "Identifier Audio",
+                "href": "http://media.npr.org/stationid/711.mp3"
+            }
+        ],
+        "homepage": "http://www.wwno.org",
+        "donation_url": "http://wwno.org/donate",
+        "logo": "http://media.npr.org/images/stations/logos/wwno_fm.gif"
+    }
+]
