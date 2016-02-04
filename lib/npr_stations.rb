@@ -1,10 +1,15 @@
-require "npr_request"
+require "json"
+require_relative "./npr_request"
 
 module NPR
   class Stations
     def self.find(query)
-      station = NPR.request(:endpoint => :search, :method => :GET, :params => query).first
-      parse_station station
+      if query.is_a?(Hash) && query.key?(:longitude)
+        query = query[:longitude] + "," + query[:latitude]
+      end
+
+      stations = JSON.parse NPR.request(:endpoint => :search, :method => :GET, :params => { :query => query })
+      parse_station stations.first
     end
 
     private

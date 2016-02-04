@@ -1,8 +1,8 @@
 require "net/http"
 
 module NPR
-  API_KEY   = ENV["API_KEY"]
-  BASE_URL  = "https://api.npr.org"
+  API_KEY   = ENV["NPR_API_KEY"]
+  BASE_URL  = "https://api.npr.org/v2"
   METHODS   = {
     :GET => 'get'
   }
@@ -14,7 +14,7 @@ module NPR
     endpoint = ENDPOINTS[options[:endpoint]]
     method   = METHODS[options[:method]]
     uri      = URI(BASE_URL + endpoint)
-    query    = { :API_KEY => API_KEY }
+    query    = { :apiKey => API_KEY }
 
     if (options[:method] == :GET && !options[:params].nil?)
       query.merge! options[:params]

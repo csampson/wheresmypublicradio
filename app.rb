@@ -13,7 +13,7 @@ class App < Sinatra::Base
 
   get "/stations" do
     location = params[:location]
-    stations = NPR::Stationfinder.find_stations(:location => location, :type => :coordinates)
+    stations = NPR::Stationfinder.find(:query => location)
 
     json stations
   end

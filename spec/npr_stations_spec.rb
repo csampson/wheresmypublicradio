@@ -6,7 +6,7 @@ describe NPR::Stations do
     it "should make a request to /stations/search/:query" do
       api_response = load_fixture("stations_search.json")
       coordinates  = { :latitude => nil, :longitude => nil }
-      stub         = stub_request(:get, /.*api.npr.org\/stations.*/).to_return(:body => api_response)
+      stub         = stub_request(:get, /.*api.npr.org\/v2\/stations.*/).to_return(:body => api_response)
 
       NPR::Stations.find(:query => coordinates)
 
@@ -17,7 +17,7 @@ describe NPR::Stations do
       api_response = load_fixture("stations_search.json")
       coordinates  = { :latitude => nil, :longitude => nil }
 
-      stub_request(:get, /.*api.npr.org\/stations.*/).to_return(:body => api_response)
+      stub_request(:get, /.*api.npr.org\/v2\/stations.*/).to_return(:body => api_response)
 
       station = NPR::Stations.find(:query => coordinates)
 
